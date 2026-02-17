@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liu Wei - AI & Full-Stack Developer</title>
+    <meta name="description" content="Liu Wei - AI & Full-Stack Developer, Computer Science Student. Specializing in deep learning, computer vision, and large language model applications.">
+    <style>
+        :root {
+            --blue: #003399;
+            --blue-light: #e8eef7;
+            --dark: #1a1a1a;
+            --gray: #3c3c3c;
+            --light-gray: #666;
+            --line: #003399;
+            --bg: #ffffff;
+            --max-w: 800px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Times New Roman', 'Georgia', serif;
+            color: var(--dark);
+            background: #f4f4f4;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page {
+            max-width: var(--max-w);
+            margin: 20px auto;
+            background: var(--bg);
+            padding: 40px 50px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+
+        @media print {
+            body { background: white; }
+            .page { box-shadow: none; margin: 0; padding: 30px 40px; }
+            .no-print { display: none; }
+        }
+
+        @media (max-width: 600px) {
+            .page { padding: 20px 18px; margin: 0; }
+            .entry-header { flex-direction: column; }
+            .entry-header .date { text-align: left; margin-top: 2px; }
+            .skill-row { flex-direction: column; }
+            .skill-label { min-width: auto; margin-bottom: 2px; }
+            h1 { font-size: 1.6em; }
+        }
+
+        /* Header */
+        header { text-align: center; margin-bottom: 8px; }
+        h1 { font-size: 1.9em; color: var(--blue); margin-bottom: 2px; font-weight: 700; }
+        .tagline { font-size: 1.05em; color: var(--light-gray); margin-bottom: 6px; }
+        .contact {
+            font-size: 0.85em;
+            color: var(--dark);
+            word-spacing: 1px;
+        }
+        .contact a { color: var(--blue); text-decoration: none; }
+        .contact a:hover { text-decoration: underline; }
+        .contact .sep { margin: 0 6px; color: #999; }
+
+        /* Sections */
+        .section { margin-top: 14px; }
+        .section-title {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: var(--blue);
+            border-bottom: 2px solid var(--line);
+            padding-bottom: 2px;
+            margin-bottom: 8px;
+        }
+
+        /* Entry headers */
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-top: 8px;
+        }
+        .entry-title { font-weight: 700; font-size: 0.95em; }
+        .date { font-size: 0.9em; color: var(--gray); white-space: nowrap; }
+        .subtitle { font-style: italic; color: var(--light-gray); font-size: 0.88em; margin-bottom: 3px; }
+
+        /* Bullets */
+        ul { list-style: none; padding-left: 14px; }
+        ul li {
+            position: relative;
+            font-size: 0.88em;
+            margin-bottom: 3px;
+            padding-left: 12px;
+            line-height: 1.45;
+        }
+        ul li::before {
+            content: "\2022";
+            position: absolute;
+            left: 0;
+            color: var(--dark);
+        }
+
+        /* Skills table */
+        .skill-row {
+            display: flex;
+            font-size: 0.88em;
+            margin-bottom: 2px;
+            line-height: 1.4;
+        }
+        .skill-label {
+            font-weight: 700;
+            min-width: 190px;
+            flex-shrink: 0;
+        }
+        .skill-value { color: var(--gray); }
+
+        /* PDF download button */
+        .download-bar {
+            text-align: center;
+            margin: 10px auto 0;
+            max-width: var(--max-w);
+        }
+        .download-btn {
+            display: inline-block;
+            padding: 8px 24px;
+            background: var(--blue);
+            color: white;
+            text-decoration: none;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 0.85em;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .download-btn:hover { background: #002277; }
+
+        strong { font-weight: 700; }
+    </style>
+</head>
+<body>
+
+<div class="download-bar no-print">
+    <a href="LiuWei-Resume-English-Updated.pdf" class="download-btn" download>Download PDF</a>
+</div>
+
+<div class="page">
+    <header>
+        <h1>LIUWEI (Liu Wei)</h1>
+        <div class="tagline">AI & Full-Stack Developer | Computer Science Student</div>
+        <div class="contact">
+            <a href="mailto:sunflowerslw0607@gmail.com">sunflowerslw0607@gmail.com</a>
+            <span class="sep">|</span>
+            +86 18355366842
+            <span class="sep">|</span>
+            <a href="https://linkedin.com/in/liu-wei-936468338" target="_blank">LinkedIn</a>
+            <span class="sep">|</span>
+            <a href="https://github.com/SunflowersLwtech" target="_blank">GitHub</a>
+        </div>
+    </header>
+
+    <!-- About Me -->
+    <div class="section">
+        <div class="section-title">About Me</div>
+        <p style="font-size:0.9em;">
+            Solid foundation in AI theory with extensive project experience, specializing in
+            <strong>deep learning</strong>, <strong>computer vision</strong>, and
+            <strong>large language model applications</strong>.
+            Complete experience from model selection, optimization, deployment to full-stack AI application development.
+            Passionate about solving technical challenges in high-performance AI systems, eager to create value in real business scenarios.
+        </p>
+    </div>
+
+    <!-- Education -->
+    <div class="section">
+        <div class="section-title">Education</div>
+        <div class="entry-header">
+            <span class="entry-title">Asia Pacific University (APU) & De Montfort University (DMU), Malaysia</span>
+            <span class="date">2024–2027 (Expected)</span>
+        </div>
+        <div style="font-weight:700; font-size:0.9em;">Bachelor of Science (Hons) in Computer Science (Dual Degree)</div>
+        <ul>
+            <li><strong>CGPA: 3.87 / 4.00</strong> (First Class Honours) | Entrance Scholarship Recipient</li>
+        </ul>
+    </div>
+
+    <!-- Hackathon -->
+    <div class="section">
+        <div class="section-title">Hackathon & Competition</div>
+        <div class="entry-header">
+            <span class="entry-title">Deriv AI Hackathon 2026 — Finalist (Top 4–7)</span>
+            <span class="date">Feb 2026</span>
+        </div>
+        <div class="subtitle">Team: TradeIQ | Cyberjaya, Malaysia | Core Developer & AI Pipeline Architect</div>
+        <ul>
+            <li>Built <strong>"TradeIQ"</strong>, an AI-powered intelligent trading platform for retail traders — awarded <strong>RM 2,000</strong> prize as Finalist among 56 teams (200+ participants)</li>
+            <li>Designed a <strong>5-agent AI pipeline</strong> (Market Monitor → Event Analyst → Portfolio Advisor → Behavioral Sentinel → Content Creator) using <strong>DeepSeek V3</strong> with streaming function calling</li>
+            <li>Developed flagship <strong>"Trading Twin"</strong> feature: dual equity curve simulation comparing impulsive vs. disciplined trading, with AI-generated behavioral narratives</li>
+            <li><strong>Tech Stack</strong>: Next.js 16, React 19, Django 5, Django Channels (WebSocket), Supabase PostgreSQL, Upstash Redis, Deriv WebSocket API, Bluesky AT Protocol</li>
+            <li><strong>Delivered full-stack product in 24 hours</strong>: real-time market analysis, behavioral coaching with risk scoring, and social content engine with one-click publishing</li>
+        </ul>
+    </div>
+
+    <!-- Internship -->
+    <div class="section">
+        <div class="section-title">Internship Experience</div>
+        <div class="entry-header">
+            <span class="entry-title">Kuayue Xingkong (Hangzhou) Technology Co., Ltd.</span>
+            <span class="date">Sep 2025–Present</span>
+        </div>
+        <div class="subtitle">Large Language Model Algorithm Engineer</div>
+        <ul>
+            <li><strong>LLM Application & Optimization</strong>: Prompt engineering, CoT logic; Fine-tuned GPT, Claude, Gemini, DeepSeek; Built RAG with LangChain/LlamaIndex; LoRA/QLoRA/PEFT; Optimized inference (TensorRT, vLLM, DeepSpeed)</li>
+            <li><strong>Agent System Development</strong>: Multi-agent architecture (Planner/Executor/Tool-Using Agent); Agent memory systems; Function Calling/Tool Use integrating APIs, databases, code execution</li>
+            <li><strong>Backend & API</strong>: Python (FastAPI/Flask) + Node.js (Express/NestJS); PostgreSQL/MongoDB/Redis; Async queues (Celery/asyncio); Streaming (SSE/WebSocket)</li>
+            <li><strong>Frontend</strong>: React/Next.js/Vue/TailwindCSS; Chat panels, agent consoles; Real-time streaming & reasoning chain visualization</li>
+            <li><strong>DevOps & Product</strong>: Docker/K8s/Nginx CI/CD; AWS/GCP/Vercel; Prometheus/Grafana; Defined AI product architecture from scratch</li>
+        </ul>
+    </div>
+
+    <!-- Skills -->
+    <div class="section">
+        <div class="section-title">Skills</div>
+        <div class="skill-row"><span class="skill-label">Programming Languages</span><span class="skill-value">Python, TypeScript, JavaScript, Java, C, SQL</span></div>
+        <div class="skill-row"><span class="skill-label">Backend Development</span><span class="skill-value">NestJS, FastAPI, Django, Node.js, Socket.IO, Microservices</span></div>
+        <div class="skill-row"><span class="skill-label">Frontend Development</span><span class="skill-value">React, Next.js, Redux Toolkit, Tailwind CSS, Streamlit</span></div>
+        <div class="skill-row"><span class="skill-label">Database & Cache</span><span class="skill-value">PostgreSQL, Supabase, TypeORM, Redis, MongoDB</span></div>
+        <div class="skill-row"><span class="skill-label">Deep Learning</span><span class="skill-value">TensorFlow, PyTorch, CUDA, GPU Accel., TensorRT, vLLM, DeepSpeed</span></div>
+        <div class="skill-row"><span class="skill-label">Computer Vision</span><span class="skill-value">DeepFace, FasNet, RetinaFace, MTCNN, Emotion Recognition, Liveness Detection</span></div>
+        <div class="skill-row"><span class="skill-label">NLP & LLM</span><span class="skill-value">GPT-4, Claude, Gemini, DeepSeek, Deepgram STT/TTS, RAG, LoRA/QLoRA/PEFT</span></div>
+        <div class="skill-row"><span class="skill-label">AI Frameworks & Tools</span><span class="skill-value">LangChain, LlamaIndex, Ollama, Function Calling, Multi-Agent Systems</span></div>
+        <div class="skill-row"><span class="skill-label">Cloud Native & DevOps</span><span class="skill-value">GCP (Vertex AI), AWS, Docker, Kubernetes, CI/CD, Git</span></div>
+    </div>
+
+    <!-- Project Experience -->
+    <div class="section">
+        <div class="section-title">Project Experience</div>
+
+        <div class="entry-header">
+            <span class="entry-title">SynCVE — Real-time Emotion Recognition & Anti-Spoofing System</span>
+            <span class="date">2025–Present</span>
+        </div>
+        <div class="subtitle">Core Developer & AI Algorithm Lead</div>
+        <ul>
+            <li>Integrated <strong>DeepFace</strong> and <strong>FasNet</strong> anti-spoofing model, achieving <strong>85–95% accuracy</strong> for 7 core emotions and efficient liveness detection</li>
+            <li>Configured <strong>CUDA 11.8</strong> GPU acceleration for TensorFlow & PyTorch; reduced detection latency from 15s to <strong>1–2s</strong> (<strong>87% improvement</strong>)</li>
+            <li>Diagnosed and resolved PyTorch CUDA initialization failure (WinError 127); created environment configuration documentation</li>
+        </ul>
+
+        <div class="entry-header">
+            <span class="entry-title">SynPod — AI-Driven Intelligent Travel Voice Assistant Platform</span>
+            <span class="date">2025–Present</span>
+        </div>
+        <div class="subtitle">Core Developer & AI Algorithm Lead</div>
+        <ul>
+            <li>Integrated <strong>OpenAI GPT-4</strong> (Function Calling) and <strong>Deepgram Nova-2 (STT) / Aura-2 (TTS)</strong> APIs for real-time voice interaction and podcast generation</li>
+            <li>Designed production-grade <strong>Token Bucket</strong> rate controller and <strong>FSM</strong> with 5 states for complex generation workflows</li>
+            <li>Achieved <strong>&lt;300ms latency</strong> voice interruption via persistent WebSocket, intelligent text chunking, and content prefetching</li>
+        </ul>
+
+        <div class="entry-header">
+            <span class="entry-title">SynText — AI-Driven Enterprise Real-time Translation SaaS Platform</span>
+            <span class="date">2024–Present</span>
+        </div>
+        <div class="subtitle">Project Lead & Chief Architect</div>
+        <ul>
+            <li>Led NestJS microservices with PostgreSQL and Redis, achieved <strong>millisecond-level API response</strong></li>
+            <li>Self-developed speech-to-text engine; integrated and optimized <strong>DeepSeek AI</strong> for translation; designed subscription tiers for commercialization</li>
+        </ul>
+
+        <div class="entry-header">
+            <span class="entry-title">Malaysia Smart Tourism AI Assistant</span>
+            <span class="date">2025–Present</span>
+        </div>
+        <div class="subtitle">Core Developer & AI Algorithm Lead</div>
+        <ul>
+            <li>Fine-tuned <strong>Gemini 2.5 Flash</strong> on <strong>Google Vertex AI</strong> for Malaysian context; designed four-stage dialogue engine with multimodal interaction (FastAPI + Streamlit)</li>
+        </ul>
+
+        <div class="entry-header">
+            <span class="entry-title">AIT Systems — Intelligent Enterprise Management Platform (with Daikin Industries)</span>
+            <span class="date">2025–Present</span>
+        </div>
+        <div class="subtitle">Technical Lead</div>
+        <ul>
+            <li>Designed TypeScript-based microservices + RAG stack with <strong>Ollama</strong> local LLM; RBAC data security; enterprise AI assistant for knowledge retrieval</li>
+        </ul>
+    </div>
+
+    <!-- Certifications -->
+    <div class="section">
+        <div class="section-title">Certifications</div>
+        <ul>
+            <li><strong>Python for Everybody Specialization</strong> — University of Michigan</li>
+            <li><strong>C for Everyone: Programming Fundamentals</strong> — UC Santa Cruz</li>
+            <li><strong>Introduction to Networking</strong> — NVIDIA</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
