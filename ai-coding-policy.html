@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Assisted Development Policy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1614;
+  --ink-soft: #3d3530;
+  --ink-muted: #7a6f66;
+  --ink-faint: #b0a79e;
+  --paper: #f6f1eb;
+  --paper-warm: #efe8df;
+  --paper-deep: #e6ddd2;
+  --paper-white: #faf7f3;
+  --accent: #c44d2b;
+  --accent-hover: #a83d20;
+  --accent-bg: rgba(196, 77, 43, 0.07);
+  --accent-border: rgba(196, 77, 43, 0.18);
+  --pass: #3a7d44;
+  --pass-bg: rgba(58, 125, 68, 0.06);
+  --pass-border: rgba(58, 125, 68, 0.18);
+  --fail: #b5332e;
+  --fail-bg: rgba(181, 51, 46, 0.06);
+  --fail-border: rgba(181, 51, 46, 0.18);
+  --warn: #a07c1e;
+  --warn-bg: rgba(160, 124, 30, 0.06);
+  --warn-border: rgba(160, 124, 30, 0.18);
+  --info: #4a5d8a;
+  --info-bg: rgba(74, 93, 138, 0.06);
+  --info-border: rgba(74, 93, 138, 0.18);
+  --rule: rgba(26, 22, 20, 0.1);
+  --serif: 'Instrument Serif', 'Noto Serif SC', Georgia, serif;
+  --sans: 'DM Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'IBM Plex Mono', 'Menlo', monospace;
+  --ease: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+[data-theme="dark"] {
+  --ink: #e8e2db;
+  --ink-soft: #c7bfb5;
+  --ink-muted: #8a8078;
+  --ink-faint: #5c544d;
+  --paper: #191614;
+  --paper-warm: #211d1a;
+  --paper-deep: #2a2521;
+  --paper-white: #141110;
+  --accent: #e07050;
+  --accent-hover: #f08060;
+  --accent-bg: rgba(224, 112, 80, 0.1);
+  --accent-border: rgba(224, 112, 80, 0.22);
+  --pass: #5daa68;
+  --pass-bg: rgba(93, 170, 104, 0.08);
+  --pass-border: rgba(93, 170, 104, 0.2);
+  --fail: #d05550;
+  --fail-bg: rgba(208, 85, 80, 0.08);
+  --fail-border: rgba(208, 85, 80, 0.2);
+  --warn: #c9a840;
+  --warn-bg: rgba(201, 168, 64, 0.08);
+  --warn-border: rgba(201, 168, 64, 0.2);
+  --info: #7a94c8;
+  --info-bg: rgba(122, 148, 200, 0.08);
+  --info-border: rgba(122, 148, 200, 0.2);
+  --rule: rgba(232, 226, 219, 0.1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+/* ─── TOPBAR ─── */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+  transition: background 0.4s var(--ease);
+}
+.topbar-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.topbar-left {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.topbar-left span { color: var(--accent); }
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.lang-btn, .theme-btn {
+  border: none;
+  background: none;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 4px;
+  color: var(--ink-muted);
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+.lang-btn.active {
+  color: var(--accent);
+  background: var(--accent-bg);
+}
+.lang-btn:not(.active):hover,
+.theme-btn:hover { color: var(--ink-soft); }
+.theme-btn {
+  margin-left: 8px;
+  font-size: 0.95rem;
+  padding: 6px 10px;
+}
+.divider-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--ink-faint);
+  margin: 0 4px;
+}
+
+/* ─── HERO ─── */
+.hero {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 5rem 2rem 3rem;
+  position: relative;
+}
+.hero-version {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+  padding: 4px 12px;
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+.hero-desc {
+  font-size: 1.08rem;
+  line-height: 1.85;
+  color: var(--ink-soft);
+  max-width: 580px;
+  margin-bottom: 2.5rem;
+}
+.hero-tags {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.htag {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 2px;
+  border: 1px solid;
+}
+.htag-pass { color: var(--pass); border-color: var(--pass-border); background: var(--pass-bg); }
+.htag-fail { color: var(--fail); border-color: var(--fail-border); background: var(--fail-bg); }
+.htag-strict { color: var(--accent); border-color: var(--accent-border); background: var(--accent-bg); }
+
+.hero-rule {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  border: none;
+  border-top: 1px solid var(--rule);
+}
+
+/* ─── TOC ─── */
+.toc {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 2rem 3rem;
+  display: flex;
+  gap: 0.4rem 1.5rem;
+  flex-wrap: wrap;
+}
+.toc a {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+  text-decoration: none;
+  padding: 4px 0;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s;
+}
+.toc a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.toc-num {
+  color: var(--ink-faint);
+  margin-right: 4px;
+}
+
+/* ─── CONTENT ─── */
+.content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 2rem 5rem;
+}
+
+/* Section */
+.sect {
+  margin-bottom: 4.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.sect.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.sect-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--ink);
+}
+.sect-num {
+  font-family: var(--serif);
+  font-size: 2.6rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--accent);
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+.sect-title {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* Philosophy / callout */
+.callout {
+  border-left: 3px solid var(--accent);
+  padding: 1.5rem 0 1.5rem 1.8rem;
+  margin-bottom: 2.5rem;
+}
+.callout p {
+  font-size: 1.02rem;
+  line-height: 1.9;
+  color: var(--ink-soft);
+}
+.callout p + p { margin-top: 1rem; }
+.callout strong { color: var(--ink); font-weight: 600; }
+
+/* Law cards */
+.law {
+  margin-bottom: 2.2rem;
+  padding: 1.8rem 2rem;
+  background: var(--paper-warm);
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  transition: border-color 0.3s, background 0.4s var(--ease);
+}
+.law:hover { border-color: var(--ink-faint); }
+.law-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+.law-glyph {
+  font-size: 1.6rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.law-info h3 {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.3rem;
+}
+.law-info .law-sub {
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
+
+/* Requirement / Failure blocks */
+.blk {
+  display: flex;
+  gap: 0.8rem;
+  align-items: baseline;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--rule);
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--ink-soft);
+}
+.blk:first-of-type { border-top: none; }
+.blk-tag {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  margin-top: 2px;
+}
+.blk-req .blk-tag { background: var(--pass-bg); color: var(--pass); border: 1px solid var(--pass-border); }
+.blk-fail .blk-tag { background: var(--fail-bg); color: var(--fail); border: 1px solid var(--fail-border); }
+.blk-warn .blk-tag { background: var(--warn-bg); color: var(--warn); border: 1px solid var(--warn-border); }
+.blk-info .blk-tag { background: var(--info-bg); color: var(--info); border: 1px solid var(--info-border); }
+.blk strong { color: var(--ink); font-weight: 600; }
+
+/* Disclosure scale */
+.disclosure {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.disc-row {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--rule);
+}
+.disc-row:first-child { border-top: none; }
+.disc-pip {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.disc-label {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  min-width: 120px;
+  flex-shrink: 0;
+}
+.disc-desc {
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+}
+
+/* Review grid */
+.rgrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.rcard {
+  background: var(--paper-warm);
+  padding: 1.6rem 1.5rem;
+  transition: background 0.3s var(--ease);
+}
+.rcard:hover { background: var(--paper-deep); }
+.rcard h4 {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 400;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.rcard h4 .rc-glyph { font-size: 1.1rem; }
+.rule-line {
+  font-size: 0.84rem;
+  line-height: 1.7;
+  padding: 0.5rem 0;
+  color: var(--ink-muted);
+}
+.rule-line + .rule-line {
+  border-top: 1px dashed var(--rule);
+}
+.kw {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border-radius: 2px;
+  margin-right: 2px;
+}
+.kw-if { background: var(--warn-bg); color: var(--warn); }
+.kw-then { background: var(--pass-bg); color: var(--pass); }
+
+/* Anti-pattern cards */
+.rcard-ap p {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--ink-muted);
+}
+
+/* Best practices */
+.bp-item {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--rule);
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: var(--ink-soft);
+}
+.bp-item:first-child { border-top: none; }
+.bp-num {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  color: var(--accent);
+  opacity: 0.5;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 4px;
+}
+.bp-item strong { color: var(--ink); font-weight: 600; }
+
+/* Code */
+code {
+  font-family: var(--mono);
+  font-size: 0.82em;
+  background: var(--paper-deep);
+  padding: 2px 7px;
+  border-radius: 3px;
+  border: 1px solid var(--rule);
+  color: var(--accent);
+}
+
+strong { font-weight: 600; }
+em { font-style: italic; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── FOOTER ─── */
+.foot {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.foot-brand {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.foot-motto {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--ink-faint);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 680px) {
+  .hero { padding: 3rem 1.2rem 2rem; }
+  .hero h1 { font-size: 2.2rem; }
+  .topbar-inner, .toc, .content, .foot { padding-left: 1.2rem; padding-right: 1.2rem; }
+  .topbar-left { font-size: 0.92rem; }
+  .rgrid { grid-template-columns: 1fr; }
+  .law { padding: 1.2rem 1.2rem; }
+  .disc-row { flex-wrap: wrap; gap: 0.5rem; }
+  .disc-label { min-width: auto; }
+  .foot { flex-direction: column; text-align: center; }
+  .sect-num { font-size: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left" id="navTitle">AI Dev <span>Policy</span></div>
+    <div class="topbar-right">
+      <button class="lang-btn active" id="pill-en" onclick="setLang('en')">En</button>
+      <button class="lang-btn" id="pill-cn" onclick="setLang('cn')">中文</button>
+      <div class="divider-dot"></div>
+      <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme">☀</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════ ENGLISH ═══════════ -->
+<div id="en">
+
+<header class="hero">
+  <div class="hero-version">v 2.0 — Team Engineering Standard</div>
+  <h1>AI-Assisted<br><em>Development Policy</em></h1>
+  <p class="hero-desc">We embrace AI-powered coding tools — but every engineer must remain the sole responsible author. This policy defines how our team uses AI responsibly, maintains quality, and ships code we can stand behind.</p>
+  <div class="hero-tags">
+    <span class="htag htag-pass">✓ AI-Assisted: Accepted</span>
+    <span class="htag htag-fail">✗ AI-Proxied: Rejected</span>
+    <span class="htag htag-strict">Enforcement: Strict</span>
+  </div>
+</header>
+<hr class="hero-rule">
+
+<nav class="toc" id="toc-en">
+  <a href="#s1"><span class="toc-num">01</span> Core Philosophy</a>
+  <a href="#s2"><span class="toc-num">02</span> Five Laws</a>
+  <a href="#s3"><span class="toc-num">03</span> AI Disclosure</a>
+  <a href="#s4"><span class="toc-num">04</span> Review Checklist</a>
+  <a href="#s5"><span class="toc-num">05</span> Anti-Patterns</a>
+  <a href="#s6"><span class="toc-num">06</span> Best Practices</a>
+</nav>
+
+<main class="content">
+
+<!-- § 1 -->
+<section class="sect" id="s1">
+  <div class="sect-head">
+    <div class="sect-num">01</div>
+    <h2 class="sect-title">Core Philosophy</h2>
+  </div>
+  <div class="callout">
+    <p>We accept and encourage AI-assisted code — using tools like GitHub Copilot, Cursor, Claude, ChatGPT, and others — but we <strong>strictly reject</strong> contributions where the engineer acts merely as a copy-paste proxy for AI output.</p>
+    <p>The difference is simple: <strong>AI-assisted</strong> means the engineer understands, verifies, and takes ownership of every line. <strong>AI-proxied</strong> means the engineer blindly submits what the model generated. The former is a productivity multiplier; the latter is a liability.</p>
+    <p>Every engineer is the <strong>sole responsible author</strong> of their submitted code, comments, and design decisions — regardless of which tools helped produce them.</p>
+  </div>
+</section>
+
+<!-- § 2 -->
+<section class="sect" id="s2">
+  <div class="sect-head">
+    <div class="sect-num">02</div>
+    <h2 class="sect-title">The Five Laws of Contribution</h2>
+  </div>
+
+  <!-- Law 1 -->
+  <div class="law">
+    <div class="law-top">
+      <div class="law-glyph">🔬</div>
+      <div class="law-info">
+        <h3>Law 1 — Proof of Verification</h3>
+        <p class="law-sub">AI tools frequently write code that looks correct but fails at execution. "Vibe checks" and green squiggles are not enough.</p>
+      </div>
+    </div>
+    <div class="blk blk-req"><span class="blk-tag">Req</span><div>Every PR with functional changes must include pasted local test output (e.g. <code>cargo test</code>, <code>pytest</code>, <code>npm test</code>). Screenshots or CI links are also acceptable.</div></div>
+    <div class="blk blk-req"><span class="blk-tag">Req</span><div>Non-trivial changes must be discussed before implementation — via GitHub issue, team chat, or design doc. The PR must reference the discussion.</div></div>
+    <div class="blk blk-req"><span class="blk-tag">Req</span><div>Algorithm implementations must reference an authoritative source (academic paper, established library, official documentation) to prevent AI hallucination of non-existent algorithms.</div></div>
+    <div class="blk blk-fail"><span class="blk-tag">Fail</span><div>PRs lacking execution proof for complex logic will be marked <strong>Unverified</strong> and blocked from merge.</div></div>
+  </div>
+
+  <!-- Law 2 -->
+  <div class="law">
+    <div class="law-top">
+      <div class="law-glyph">🚫</div>
+      <div class="law-info">
+        <h3>Law 2 — No Hallucinations, No Redundancy</h3>
+        <p class="law-sub">AI models hallucinate comments about deleted code, reinvent existing utilities, and produce cargo-cult patterns. We actively reject these.</p>
+      </div>
+    </div>
+    <div class="blk blk-req"><span class="blk-tag">Req</span><div>Use existing project utilities, shared libraries, and established patterns. Never reinvent what already exists in the codebase.</div></div>
+    <div class="blk blk-fail"><span class="blk-tag">Fail</span><div><strong>Ghost Comments</strong> — comments explaining logic that was deleted, doesn't exist, or is obviously wrong — trigger a full manual rewrite request.</div></div>
+    <div class="blk blk-fail"><span class="blk-tag">Fail</span><div><strong>Redundant Comments</strong> like <code>// returns the result</code> or <code>// loop through the array</code> are signs of unreviewed AI output. Remove them.</div></div>
+    <div class="blk blk-fail"><span class="blk-tag">Fail</span><div><strong>Ignoring Language Best Practices</strong> — e.g. <code>unwrap()</code> in Rust library code, bare <code>except:</code> in Python, <code>any</code> in TypeScript — indicates unreviewed AI output.</div></div>
+  </div>
+
+  <!-- Law 3 -->
+  <div class="law">
+    <div class="law-top">
+      <div class="law-glyph">🧠</div>
+      <div class="law-info">
+        <h3>Law 3 — The "Explain It" Standard</h3>
+        <p class="law-sub">If you wrote it, you can explain it. No exceptions.</p>
+      </div>
+    </div>
+    <div class="blk blk-req"><span class="blk-tag">Req</span><div>If asked during code review, you must be able to explain the logic, derive the math, justify the design choice, or walk through the edge cases of any function you submitted.</div></div>
+    <div class="blk blk-fail"><span class="blk-tag">Fail</span><div>Answering a review question with <em>"That's what the AI outputted"</em> or <em>"I don't know, it passes tests"</em> leads to <strong>immediate PR closure</strong>.</div></div>
+    <div class="blk blk-warn"><span class="blk-tag">Note</span><div>This doesn't mean you need to memorize every line. It means you've read, understood, and can discuss the code you submit — just as you would for code you wrote entirely by hand.</div></div>
+  </div>
+
+  <!-- Law 4 -->
+  <div class="law">
+    <div class="law-top">
+      <div class="law-glyph">🏗️</div>
+      <div class="law-info">
+        <h3>Law 4 — Architecture Ownership</h3>
+        <p class="law-sub">AI is great at writing functions, but architecture decisions must come from the engineer.</p>
+      </div>
+    </div>
+    <div class="blk blk-req"><span class="blk-tag">Req</span><div>Structural decisions — module boundaries, API surface, data modeling, dependency choices — must be made by the engineer, not blindly accepted from AI suggestions.</div></div>
+    <div class="blk blk-req"><span class="blk-tag">Req</span><div>When AI suggests a significant structural change, document <em>why</em> you accepted or modified the suggestion in your PR description.</div></div>
+    <div class="blk blk-fail"><span class="blk-tag">Fail</span><div>PRs that introduce unnecessary abstractions, over-engineered patterns, or architectural changes without justification will be rejected as <strong>"AI-Driven Complexity."</strong></div></div>
+  </div>
+
+  <!-- Law 5 -->
+  <div class="law">
+    <div class="law-top">
+      <div class="law-glyph">🔒</div>
+      <div class="law-info">
+        <h3>Law 5 — Security & Sensitivity Awareness</h3>
+        <p class="law-sub">AI models have no concept of your security context. The engineer must be the security gate.</p>
+      </div>
+    </div>
+    <div class="blk blk-req"><span class="blk-tag">Req</span><div>Never paste proprietary code, secrets, API keys, or customer data into AI prompts unless using approved, self-hosted, or enterprise-tier tools with data retention guarantees.</div></div>
+    <div class="blk blk-req"><span class="blk-tag">Req</span><div>Manually review all AI-generated code touching authentication, authorization, cryptography, data validation, or financial logic. These are high-risk zones where AI errors have outsized impact.</div></div>
+    <div class="blk blk-fail"><span class="blk-tag">Fail</span><div>Submitting AI-generated security-critical code without explicit review notes will be flagged as a <strong>security violation</strong>.</div></div>
+  </div>
+</section>
+
+<!-- § 3 -->
+<section class="sect" id="s3">
+  <div class="sect-head">
+    <div class="sect-num">03</div>
+    <h2 class="sect-title">AI Usage Disclosure</h2>
+  </div>
+  <div class="callout" style="margin-bottom:1.5rem">
+    <p>Transparency builds trust. Every PR should disclose AI usage honestly — not as shame, but as context for reviewers.</p>
+  </div>
+  <div class="law">
+    <div class="disclosure">
+      <div class="disc-row">
+        <div class="disc-pip" style="background:var(--pass)"></div>
+        <div class="disc-label" style="color:var(--pass)">Minimal AI</div>
+        <div class="disc-desc">Autocompletion, typo fixes, boilerplate generation. Engineer wrote the core logic.</div>
+      </div>
+      <div class="disc-row">
+        <div class="disc-pip" style="background:var(--warn)"></div>
+        <div class="disc-label" style="color:var(--warn)">Significant AI</div>
+        <div class="disc-desc">AI drafted major sections. Engineer reviewed, understood, tested, and modified as needed.</div>
+      </div>
+      <div class="disc-row">
+        <div class="disc-pip" style="background:var(--fail)"></div>
+        <div class="disc-label" style="color:var(--fail)">Fully Generated</div>
+        <div class="disc-desc">AI produced most of the code. Requires extra scrutiny — engineer must demonstrate full understanding.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- § 4 -->
+<section class="sect" id="s4">
+  <div class="sect-head">
+    <div class="sect-num">04</div>
+    <h2 class="sect-title">Code Review Checklist</h2>
+  </div>
+  <p style="color:var(--ink-muted); margin-bottom:1.5rem; font-size:0.92rem;">Reviewers — human and automated — should use this checklist to detect low-effort AI output:</p>
+  <div class="rgrid">
+    <div class="rcard">
+      <h4><span class="rc-glyph">📝</span> "Wall of Text" PR Descriptions</h4>
+      <div class="rule-line"><span class="kw kw-if">If</span> the PR description is &gt;300 words, uses generic H2 headers, and lacks specific file references</div>
+      <div class="rule-line"><span class="kw kw-then">Then</span> flag as "Likely AI-Generated" — ask the author to rewrite in their own words</div>
+    </div>
+    <div class="rcard">
+      <h4><span class="rc-glyph">👻</span> Hallucinated Patterns</h4>
+      <div class="rule-line"><span class="kw kw-if">If</span> code reinvents existing project utilities or uses generic names like <code>data</code>, <code>process_item</code></div>
+      <div class="rule-line"><span class="kw kw-then">Then</span> request refactor to use existing utilities and domain-specific naming</div>
+    </div>
+    <div class="rcard">
+      <h4><span class="rc-glyph">✅</span> Proof of Execution</h4>
+      <div class="rule-line"><span class="kw kw-if">If</span> no test output, no linked issue / discussion, no library reference for algorithms</div>
+      <div class="rule-line"><span class="kw kw-then">Then</span> request the missing artifacts before proceeding with review</div>
+    </div>
+    <div class="rcard">
+      <h4><span class="rc-glyph">🔍</span> Ghost Comments & Noise</h4>
+      <div class="rule-line"><span class="kw kw-if">If</span> comments describe nonexistent variables, or are redundant like "increments the counter"</div>
+      <div class="rule-line"><span class="kw kw-then">Then</span> flag as AI hallucination and request cleanup</div>
+    </div>
+    <div class="rcard">
+      <h4><span class="rc-glyph">⚙️</span> Language Best Practices</h4>
+      <div class="rule-line"><span class="kw kw-if">If</span> code violates language idioms — poor error handling, unnecessary cloning, missing docs on public APIs</div>
+      <div class="rule-line"><span class="kw kw-then">Then</span> request adherence to the team's language-specific style guide</div>
+    </div>
+    <div class="rcard">
+      <h4><span class="rc-glyph">🛡️</span> Security-Sensitive Code</h4>
+      <div class="rule-line"><span class="kw kw-if">If</span> PR touches auth, crypto, validation, or financial logic without explicit security review notes</div>
+      <div class="rule-line"><span class="kw kw-then">Then</span> block merge until security review is documented</div>
+    </div>
+  </div>
+</section>
+
+<!-- § 5 -->
+<section class="sect" id="s5">
+  <div class="sect-head">
+    <div class="sect-num">05</div>
+    <h2 class="sect-title">Common Anti-Patterns to Reject</h2>
+  </div>
+  <div class="rgrid">
+    <div class="rcard rcard-ap">
+      <h4><span class="rc-glyph">🍝</span> The "Spaghetti Dump"</h4>
+      <p>A massive PR with hundreds of changed lines across many files, clearly generated in one AI session with no incremental thought. Usually contains duplicated logic and inconsistent naming.</p>
+    </div>
+    <div class="rcard rcard-ap">
+      <h4><span class="rc-glyph">🏰</span> The "Castle in the Sky"</h4>
+      <p>Over-engineered abstractions nobody asked for — factory-of-factories, unnecessary design patterns, premature generalization. The AI loves to architect; the engineer should keep it grounded.</p>
+    </div>
+    <div class="rcard rcard-ap">
+      <h4><span class="rc-glyph">🦜</span> The "Parrot"</h4>
+      <p>Every function has a comment that just restates the function name. <code>// Gets the user</code> above <code>getUser()</code>. AI loves narrating the obvious — engineers should remove the noise.</p>
+    </div>
+    <div class="rcard rcard-ap">
+      <h4><span class="rc-glyph">🎭</span> The "Confidence Mask"</h4>
+      <p>Eloquent PR descriptions and well-formatted code that masks a total lack of understanding. Breaks on edge cases. Engineer can't answer basic review questions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- § 6 -->
+<section class="sect" id="s6">
+  <div class="sect-head">
+    <div class="sect-num">06</div>
+    <h2 class="sect-title">Best Practices for AI-Assisted Development</h2>
+  </div>
+  <div class="law">
+    <div class="bp-item"><div class="bp-num">1</div><div><strong>Understand before you commit.</strong> Read every line the AI generates. If you can't explain it to a teammate, don't submit it.</div></div>
+    <div class="bp-item"><div class="bp-num">2</div><div><strong>Use AI for acceleration, not replacement.</strong> Let AI handle boilerplate, initial drafts, and pattern matching. Keep architecture, edge cases, and security logic in your own hands.</div></div>
+    <div class="bp-item"><div class="bp-num">3</div><div><strong>Test aggressively.</strong> AI-generated code often has "happy path bias." Write edge case tests, error path tests, and boundary tests yourself.</div></div>
+    <div class="bp-item"><div class="bp-num">4</div><div><strong>Keep PRs focused.</strong> Don't dump an entire AI session into one PR. Break changes into logical, reviewable units — exactly as you would with hand-written code.</div></div>
+    <div class="bp-item"><div class="bp-num">5</div><div><strong>Review AI output with fresh eyes.</strong> Take a break between generation and review. AI output looks convincing at first glance — distance helps you catch errors.</div></div>
+    <div class="bp-item"><div class="bp-num">6</div><div><strong>Invest in prompt engineering.</strong> The quality of AI output correlates with the quality of your prompt. Provide context, constraints, existing patterns, and specific requirements.</div></div>
+    <div class="bp-item"><div class="bp-num">7</div><div><strong>Maintain your skills.</strong> AI tools are powerful but impermanent. Keep your core engineering skills sharp — debugging, system design, reading code, and reasoning about complexity.</div></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot-brand">AI-Assisted Development Policy v2.0</div>
+  <div class="foot-motto">We use AI as a tool. We ship as engineers.</div>
+</footer>
+
+</div>
+
+<!-- ═══════════ CHINESE ═══════════ -->
+<div id="cn" style="display:none">
+
+<header class="hero">
+  <div class="hero-version">v 2.0 — 团队工程规范</div>
+  <h1>AI 辅助<br><em>开发规范</em></h1>
+  <p class="hero-desc">我们拥抱 AI 编程工具——但每位工程师必须始终是代码的唯一责任人。本规范定义了团队如何负责任地使用 AI、维护代码质量、交付经得起检验的代码。</p>
+  <div class="hero-tags">
+    <span class="htag htag-pass">✓ AI 辅助：接受</span>
+    <span class="htag htag-fail">✗ AI 代理：拒绝</span>
+    <span class="htag htag-strict">执行力度：严格</span>
+  </div>
+</header>
+<hr class="hero-rule">
+
+<nav class="toc" id="toc-cn">
+  <a href="#s1cn"><span class="toc-num">01</span> 核心理念</a>
+  <a href="#s2cn"><span class="toc-num">02</span> 五大法则</a>
+  <a href="#s3cn"><span class="toc-num">03</span> AI 使用声明</a>
+  <a href="#s4cn"><span class="toc-num">04</span> 审查清单</a>
+  <a href="#s5cn"><span class="toc-num">05</span> 常见反模式</a>
+  <a href="#s6cn"><span class="toc-num">06</span> 最佳实践</a>
+</nav>
+
+<main class="content">
+
+<!-- § 1 CN -->
+<section class="sect" id="s1cn">
+  <div class="sect-head">
+    <div class="sect-num">01</div>
+    <h2 class="sect-title">核心理念</h2>
+  </div>
+  <div class="callout">
+    <p>我们接受并鼓励 AI 辅助编写的代码——使用 GitHub Copilot、Cursor、Claude、ChatGPT 等工具——但<strong>严格拒绝</strong>工程师仅充当 AI 输出的复制粘贴代理人。</p>
+    <p>区别很简单：<strong>AI 辅助</strong>意味着工程师理解、验证并对每一行代码负责；<strong>AI 代理</strong>意味着工程师盲目提交模型生成的内容。前者是生产力倍增器，后者是隐患。</p>
+    <p>每位工程师都是其提交的代码、注释和设计决策的<strong>唯一责任作者</strong>——无论使用了哪些工具来帮助产出。</p>
+  </div>
+</section>
+
+<!-- § 2 CN -->
+<section class="sect" id="s2cn">
+  <div class="sect-head">
+    <div class="sect-num">02</div>
+    <h2 class="sect-title">贡献五大法则</h2>
+  </div>
+
+  <div class="law">
+    <div class="law-top">
+      <div class="law-glyph">🔬</div>
+      <div class="law-info">
+        <h3>法则一 — 验证证明</h3>
+        <p class="law-sub">AI 工具经常编写看起来正确但实际执行失败的代码。"凭感觉检查"和"绿色波浪线没报错"是不够的。</p>
+      </div>
+    </div>
+    <div class="blk blk-req"><span class="blk-tag">要求</span><div>每个包含功能性更改的 PR 都必须附带本地测试输出（例如 <code>cargo test</code>、<code>pytest</code>、<code>npm test</code>）。截图或 CI 链接同样可接受。</div></div>
+    <div class="blk blk-req"><span class="blk-tag">要求</span><div>非平凡更改在实现前必须经过讨论——通过 GitHub Issue、团队群聊或设计文档。PR 必须引用该讨论。</div></div>
+    <div class="blk blk-req"><span class="blk-tag">要求</span><div>算法实现必须引用权威来源（学术论文、成熟的库、官方文档），以防止 AI 幻觉出不存在的算法。</div></div>
+    <div class="blk blk-fail"><span class="blk-tag">失败</span><div>缺少执行证明的复杂逻辑 PR 将被标记为<strong>未验证</strong>并阻止合并。</div></div>
+  </div>
+
+  <div class="law">
+    <div class="law-top">
+      <div class="law-glyph">🚫</div>
+      <div class="law-info">
+        <h3>法则二 — 禁止幻觉与冗余</h3>
+        <p class="law-sub">AI 模型会为已删除的代码生成幻觉注释、重新发明已有的工具函数、产生 cargo-cult 式的模式。我们主动拒绝这些。</p>
+      </div>
+    </div>
+    <div class="blk blk-req"><span class="blk-tag">要求</span><div>使用项目中已有的工具函数、共享库和既定模式。禁止重复造轮子。</div></div>
+    <div class="blk blk-fail"><span class="blk-tag">失败</span><div><strong>幽灵注释</strong>——解释已删除、不存在或明显错误逻辑的注释——将触发完全手动重写请求。</div></div>
+    <div class="blk blk-fail"><span class="blk-tag">失败</span><div><strong>冗余注释</strong>如 <code>// 返回结果</code> 或 <code>// 遍历数组</code> 是未审查 AI 输出的标志。必须移除。</div></div>
+    <div class="blk blk-fail"><span class="blk-tag">失败</span><div><strong>忽略语言最佳实践</strong>——如 Rust 库代码中的 <code>unwrap()</code>、Python 中裸露的 <code>except:</code>、TypeScript 中的 <code>any</code>——表明工程师未审查 AI 输出。</div></div>
+  </div>
+
+  <div class="law">
+    <div class="law-top">
+      <div class="law-glyph">🧠</div>
+      <div class="law-info">
+        <h3>法则三 — "解释清楚"标准</h3>
+        <p class="law-sub">你写的代码，你就必须能解释。没有例外。</p>
+      </div>
+    </div>
+    <div class="blk blk-req"><span class="blk-tag">要求</span><div>在代码审查中被问到时，你必须能够解释逻辑、推导数学、论证设计选择，或梳理你提交的任何函数的边界情况。</div></div>
+    <div class="blk blk-fail"><span class="blk-tag">失败</span><div>用"这是 AI 输出的"或"我不知道，反正能跑"来回答审查问题，将导致 <strong>PR 被立即关闭</strong>。</div></div>
+    <div class="blk blk-warn"><span class="blk-tag">说明</span><div>这不意味着你要背诵每一行代码。这意味着你已经阅读、理解并能够讨论你提交的代码——就像对待你完全手写的代码一样。</div></div>
+  </div>
+
+  <div class="law">
+    <div class="law-top">
+      <div class="law-glyph">🏗️</div>
+      <div class="law-info">
+        <h3>法则四 — 架构所有权</h3>
+        <p class="law-sub">AI 擅长写函数，但架构决策必须由工程师做出。</p>
+      </div>
+    </div>
+    <div class="blk blk-req"><span class="blk-tag">要求</span><div>结构性决策——模块边界、API 设计、数据建模、依赖选型——必须由工程师做出，不能盲目接受 AI 建议。</div></div>
+    <div class="blk blk-req"><span class="blk-tag">要求</span><div>当 AI 建议重大结构性变更时，在 PR 描述中记录你接受或修改该建议的<em>原因</em>。</div></div>
+    <div class="blk blk-fail"><span class="blk-tag">失败</span><div>引入不必要的抽象、过度设计的模式或无理由的架构变更的 PR 将被拒绝，标记为<strong>"AI 驱动的复杂性"</strong>。</div></div>
+  </div>
+
+  <div class="law">
+    <div class="law-top">
+      <div class="law-glyph">🔒</div>
+      <div class="law-info">
+        <h3>法则五 — 安全与敏感性意识</h3>
+        <p class="law-sub">AI 模型对你的安全上下文一无所知。工程师必须担当安全守门人。</p>
+      </div>
+    </div>
+    <div class="blk blk-req"><span class="blk-tag">要求</span><div>不要将专有代码、密钥、API Key 或客户数据粘贴到 AI 提示中——除非使用经批准的、自托管的或具有数据保留保障的企业版工具。</div></div>
+    <div class="blk blk-req"><span class="blk-tag">要求</span><div>手动审查所有涉及认证、授权、加密、数据验证或金融逻辑的 AI 生成代码。这些是 AI 错误影响被放大的高风险区域。</div></div>
+    <div class="blk blk-fail"><span class="blk-tag">失败</span><div>提交未附带显式审查说明的 AI 生成安全关键代码，将被标记为<strong>安全违规</strong>。</div></div>
+  </div>
+</section>
+
+<!-- § 3 CN -->
+<section class="sect" id="s3cn">
+  <div class="sect-head">
+    <div class="sect-num">03</div>
+    <h2 class="sect-title">AI 使用声明</h2>
+  </div>
+  <div class="callout" style="margin-bottom:1.5rem">
+    <p>透明建立信任。每个 PR 都应诚实声明 AI 使用情况——这不是羞耻，而是为审查者提供上下文。</p>
+  </div>
+  <div class="law">
+    <div class="disclosure">
+      <div class="disc-row">
+        <div class="disc-pip" style="background:var(--pass)"></div>
+        <div class="disc-label" style="color:var(--pass)">轻度使用</div>
+        <div class="disc-desc">自动补全、错别字修正、样板代码生成。核心逻辑由工程师编写。</div>
+      </div>
+      <div class="disc-row">
+        <div class="disc-pip" style="background:var(--warn)"></div>
+        <div class="disc-label" style="color:var(--warn)">重度使用</div>
+        <div class="disc-desc">AI 起草了主要部分。工程师已审查、理解、测试并按需修改。</div>
+      </div>
+      <div class="disc-row">
+        <div class="disc-pip" style="background:var(--fail)"></div>
+        <div class="disc-label" style="color:var(--fail)">完全生成</div>
+        <div class="disc-desc">AI 生成了大部分代码。需要额外审查——工程师必须展示对代码的完全理解。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- § 4 CN -->
+<section class="sect" id="s4cn">
+  <div class="sect-head">
+    <div class="sect-num">04</div>
+    <h2 class="sect-title">代码审查清单</h2>
+  </div>
+  <p style="color:var(--ink-muted); margin-bottom:1.5rem; font-size:0.92rem;">审查者（人类和自动化工具）应使用以下清单检测低质量 AI 输出：</p>
+  <div class="rgrid">
+    <div class="rcard">
+      <h4><span class="rc-glyph">📝</span> "长篇大论"式 PR 描述</h4>
+      <div class="rule-line"><span class="kw kw-if">如果</span> PR 描述超过 300 词、使用"问题/根因/解决方案"等通用标题、且缺少具体文件引用</div>
+      <div class="rule-line"><span class="kw kw-then">则</span> 标记为"疑似 AI 生成"——要求作者用自己的话重写或提供原始提示词</div>
+    </div>
+    <div class="rcard">
+      <h4><span class="rc-glyph">👻</span> 幻觉模式</h4>
+      <div class="rule-line"><span class="kw kw-if">如果</span> 代码重新实现了项目已有的工具函数，或使用 <code>data</code>、<code>process_item</code> 等泛化变量名</div>
+      <div class="rule-line"><span class="kw kw-then">则</span> 要求重构：使用已有工具函数和领域特定命名</div>
+    </div>
+    <div class="rcard">
+      <h4><span class="rc-glyph">✅</span> 执行证明</h4>
+      <div class="rule-line"><span class="kw kw-if">如果</span> 无测试输出、未关联 Issue/讨论、算法未提供库参考</div>
+      <div class="rule-line"><span class="kw kw-then">则</span> 在继续审查前要求补充缺失材料</div>
+    </div>
+    <div class="rcard">
+      <h4><span class="rc-glyph">🔍</span> 幽灵注释与噪声</h4>
+      <div class="rule-line"><span class="kw kw-if">如果</span> 注释描述了不存在的变量，或冗余如"递增计数器"</div>
+      <div class="rule-line"><span class="kw kw-then">则</span> 标记为 AI 幻觉并要求清理</div>
+    </div>
+    <div class="rcard">
+      <h4><span class="rc-glyph">⚙️</span> 语言最佳实践</h4>
+      <div class="rule-line"><span class="kw kw-if">如果</span> 代码违反语言惯例——错误处理不当、不必要的克隆、公开 API 缺少文档</div>
+      <div class="rule-line"><span class="kw kw-then">则</span> 要求遵循团队语言特定风格指南</div>
+    </div>
+    <div class="rcard">
+      <h4><span class="rc-glyph">🛡️</span> 安全敏感代码</h4>
+      <div class="rule-line"><span class="kw kw-if">如果</span> PR 涉及认证、加密、数据验证或金融逻辑，但未附带显式安全审查说明</div>
+      <div class="rule-line"><span class="kw kw-then">则</span> 在安全审查记录完成前阻止合并</div>
+    </div>
+  </div>
+</section>
+
+<!-- § 5 CN -->
+<section class="sect" id="s5cn">
+  <div class="sect-head">
+    <div class="sect-num">05</div>
+    <h2 class="sect-title">常见反模式</h2>
+  </div>
+  <div class="rgrid">
+    <div class="rcard rcard-ap">
+      <h4><span class="rc-glyph">🍝</span> "意大利面倾倒"</h4>
+      <p>一个巨大的 PR 跨越多个文件改了几百行，明显是一次 AI 会话的产物，没有增量思考。通常包含重复逻辑和不一致的命名。</p>
+    </div>
+    <div class="rcard rcard-ap">
+      <h4><span class="rc-glyph">🏰</span> "空中楼阁"</h4>
+      <p>没人要求的过度抽象——工厂的工厂、不必要的设计模式、过早的泛化。AI 热爱做架构师；工程师应该让它脚踏实地。</p>
+    </div>
+    <div class="rcard rcard-ap">
+      <h4><span class="rc-glyph">🦜</span> "鹦鹉学舌"</h4>
+      <p>每个函数都有一个仅复述函数名的注释。<code>getUser()</code> 上面写着 <code>// 获取用户</code>。AI 喜欢叙述显而易见的事情——工程师应该消除噪声。</p>
+    </div>
+    <div class="rcard rcard-ap">
+      <h4><span class="rc-glyph">🎭</span> "自信面具"</h4>
+      <p>华丽的 PR 描述和格式完美的代码掩盖了完全缺乏理解。在边界情况下崩溃。工程师无法回答基本的审查问题。</p>
+    </div>
+  </div>
+</section>
+
+<!-- § 6 CN -->
+<section class="sect" id="s6cn">
+  <div class="sect-head">
+    <div class="sect-num">06</div>
+    <h2 class="sect-title">AI 辅助开发最佳实践</h2>
+  </div>
+  <div class="law">
+    <div class="bp-item"><div class="bp-num">1</div><div><strong>先理解再提交。</strong>逐行阅读 AI 生成的代码。如果你无法向队友解释它，就不要提交。</div></div>
+    <div class="bp-item"><div class="bp-num">2</div><div><strong>AI 是加速器，不是替代品。</strong>让 AI 处理样板代码、初始草稿和模式匹配。架构、边界情况和安全逻辑留在自己手中。</div></div>
+    <div class="bp-item"><div class="bp-num">3</div><div><strong>积极测试。</strong>AI 生成的代码通常有"快乐路径偏见"。自己编写边界测试、错误路径测试和极限测试。</div></div>
+    <div class="bp-item"><div class="bp-num">4</div><div><strong>保持 PR 聚焦。</strong>不要把整个 AI 会话倒进一个 PR。将变更拆分为逻辑清晰、易于审查的单元——就像你手写代码时一样。</div></div>
+    <div class="bp-item"><div class="bp-num">5</div><div><strong>用全新的眼光审查 AI 输出。</strong>在生成和审查之间休息一下。AI 输出乍看很有说服力——保持距离有助于发现错误。</div></div>
+    <div class="bp-item"><div class="bp-num">6</div><div><strong>投资于提示工程。</strong>AI 输出质量与提示质量正相关。提供上下文、约束条件、现有模式和具体需求。</div></div>
+    <div class="bp-item"><div class="bp-num">7</div><div><strong>保持核心技能。</strong>AI 工具强大但并非永恒。保持你的核心工程能力——调试、系统设计、阅读代码和复杂度推理。</div></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot-brand">AI 辅助开发规范 v2.0</div>
+  <div class="foot-motto">我们使用 AI 作为工具，以工程师的身份交付。</div>
+</footer>
+
+</div>
+
+<script>
+let currentLang = 'en';
+let currentTheme = 'light';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.getElementById('en').style.display = lang === 'en' ? 'block' : 'none';
+  document.getElementById('cn').style.display = lang === 'cn' ? 'block' : 'none';
+  document.getElementById('pill-en').classList.toggle('active', lang === 'en');
+  document.getElementById('pill-cn').classList.toggle('active', lang === 'cn');
+  document.getElementById('navTitle').innerHTML = lang === 'en'
+    ? 'AI Dev <span>Policy</span>'
+    : 'AI 开发<span>规范</span>';
+  document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+  observeSections();
+}
+
+function toggleTheme() {
+  currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+  if (currentTheme === 'dark') {
+    document.body.setAttribute('data-theme', 'dark');
+    document.getElementById('themeBtn').textContent = '☀';
+  } else {
+    document.body.removeAttribute('data-theme');
+    document.getElementById('themeBtn').textContent = '☾';
+  }
+}
+
+function observeSections() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.sect:not(.is-visible)').forEach(el => observer.observe(el));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('themeBtn').textContent = '☾';
+  observeSections();
+});
+</script>
+
+</body>
+</html>
