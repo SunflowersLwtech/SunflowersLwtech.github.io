@@ -117,6 +117,23 @@
 
         strong { font-weight: 700; }
 
+        /* Site nav footer */
+        .site-nav {
+            max-width: var(--max-w);
+            margin: 12px auto 30px;
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 0.82em;
+            color: var(--light-gray);
+        }
+        .site-nav a {
+            color: var(--blue);
+            text-decoration: none;
+            margin: 0 8px;
+        }
+        .site-nav a:hover { text-decoration: underline; }
+        @media print { .site-nav { display: none; } }
+
         /* Password gate */
         #lock-screen {
             position: fixed;
@@ -358,6 +375,10 @@
     </div>
 </div>
 </div>
+
+<nav class="site-nav no-print">
+    📄 <a href="ai-coding-policy.html">AI-Assisted Development Policy</a>
+</nav>
 
 <script>
 (function(){
