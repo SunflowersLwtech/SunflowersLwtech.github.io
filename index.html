@@ -1,300 +1,925 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liu Wei - AI & Full-Stack Developer</title>
-    <meta name="description" content="Liu Wei - AI & Full-Stack Developer, Computer Science Student. Specializing in deep learning, computer vision, and large language model applications.">
-    <style>
-        :root {
-            --blue: #003399;
-            --blue-light: #e8eef7;
-            --dark: #1a1a1a;
-            --gray: #3c3c3c;
-            --light-gray: #666;
-            --line: #003399;
-            --bg: #ffffff;
-            --max-w: 800px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liu Wei — AI & Full-Stack Developer</title>
+<meta name="description" content="Liu Wei — AI & Full-Stack Developer, Computer Science Student. Specializing in deep learning, computer vision, and large language model applications.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1614;
+  --ink-soft: #3d3530;
+  --ink-muted: #7a6f66;
+  --ink-faint: #b0a79e;
+  --paper: #f6f1eb;
+  --paper-warm: #efe8df;
+  --paper-deep: #e6ddd2;
+  --paper-white: #faf7f3;
+  --accent: #c44d2b;
+  --accent-hover: #a83d20;
+  --accent-bg: rgba(196, 77, 43, 0.07);
+  --accent-border: rgba(196, 77, 43, 0.18);
+  --pass: #3a7d44;
+  --pass-bg: rgba(58, 125, 68, 0.06);
+  --pass-border: rgba(58, 125, 68, 0.18);
+  --info: #4a5d8a;
+  --info-bg: rgba(74, 93, 138, 0.06);
+  --info-border: rgba(74, 93, 138, 0.18);
+  --rule: rgba(26, 22, 20, 0.1);
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'IBM Plex Mono', 'Menlo', monospace;
+  --ease: cubic-bezier(0.23, 1, 0.32, 1);
+}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+[data-theme="dark"] {
+  --ink: #e8e2db;
+  --ink-soft: #c7bfb5;
+  --ink-muted: #8a8078;
+  --ink-faint: #5c544d;
+  --paper: #191614;
+  --paper-warm: #211d1a;
+  --paper-deep: #2a2521;
+  --paper-white: #141110;
+  --accent: #e07050;
+  --accent-hover: #f08060;
+  --accent-bg: rgba(224, 112, 80, 0.1);
+  --accent-border: rgba(224, 112, 80, 0.22);
+  --pass: #5daa68;
+  --pass-bg: rgba(93, 170, 104, 0.08);
+  --pass-border: rgba(93, 170, 104, 0.2);
+  --info: #7a94c8;
+  --info-bg: rgba(122, 148, 200, 0.08);
+  --info-border: rgba(122, 148, 200, 0.2);
+  --rule: rgba(232, 226, 219, 0.1);
+}
 
-        body {
-            font-family: 'Times New Roman', 'Georgia', serif;
-            color: var(--dark);
-            background: #f4f4f4;
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-        }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
 
-        .page {
-            max-width: var(--max-w);
-            margin: 20px auto;
-            background: var(--bg);
-            padding: 40px 50px;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-        }
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.4s var(--ease), color 0.4s var(--ease);
+}
 
-        @media print {
-            body { background: white; }
-            .page { box-shadow: none; margin: 0; padding: 30px 40px; }
-            .no-print { display: none; }
-        }
+/* ─── TOPBAR ─── */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+  transition: background 0.4s var(--ease);
+}
+.topbar-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.topbar-left {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.topbar-left span { color: var(--accent); }
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.nav-link {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 4px;
+  color: var(--ink-muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+.nav-link:hover { color: var(--ink-soft); text-decoration: none; }
+.nav-link.active { color: var(--accent); background: var(--accent-bg); }
+.divider-dot {
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--ink-faint);
+  margin: 0 4px;
+}
+.theme-btn {
+  border: none; background: none;
+  font-size: 0.95rem;
+  padding: 6px 10px;
+  border-radius: 4px;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-left: 8px;
+}
+.theme-btn:hover { color: var(--ink-soft); }
 
-        @media (max-width: 600px) {
-            .page { padding: 20px 18px; margin: 0; }
-            .entry-header { flex-direction: column; }
-            .entry-header .date { text-align: left; margin-top: 2px; }
-            .skill-row { flex-direction: column; }
-            .skill-label { min-width: auto; margin-bottom: 2px; }
-            h1 { font-size: 1.6em; }
-        }
+/* ─── HERO ─── */
+.hero {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 5rem 2rem 3rem;
+}
+.hero-label {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+  padding: 4px 12px;
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+.hero-role {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--ink-muted);
+  margin-bottom: 1.8rem;
+}
+.hero-about {
+  font-size: 1.02rem;
+  line-height: 1.9;
+  color: var(--ink-soft);
+  max-width: 620px;
+  margin-bottom: 2rem;
+}
+.hero-about strong { color: var(--ink); font-weight: 600; }
+.hero-contact {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 0;
+}
+.hero-contact a, .hero-contact span {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+}
+.hero-contact a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.hero-contact a:hover { text-decoration: underline; }
+.hero-contact .sep {
+  margin: 0 10px;
+  color: var(--ink-faint);
+  user-select: none;
+}
+.hero-rule {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  border: none;
+  border-top: 1px solid var(--rule);
+}
 
-        /* Header */
-        header { text-align: center; margin-bottom: 8px; }
-        h1 { font-size: 1.9em; color: var(--blue); margin-bottom: 2px; font-weight: 700; }
-        .tagline { font-size: 1.05em; color: var(--light-gray); margin-bottom: 6px; }
-        .contact {
-            font-size: 0.85em;
-            color: var(--dark);
-            word-spacing: 1px;
-        }
-        .contact a { color: var(--blue); text-decoration: none; }
-        .contact a:hover { text-decoration: underline; }
-        .contact .sep { margin: 0 6px; color: #999; }
+/* ─── CONTENT ─── */
+.content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
+}
 
-        /* Sections */
-        .section { margin-top: 14px; }
-        .section-title {
-            font-size: 1.15em;
-            font-weight: 700;
-            color: var(--blue);
-            border-bottom: 2px solid var(--line);
-            padding-bottom: 2px;
-            margin-bottom: 8px;
-        }
+/* ─── SECTIONS ─── */
+.sect {
+  margin-top: 3.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.sect.is-visible { opacity: 1; transform: translateY(0); }
+.sect-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid var(--ink);
+}
+.sect-num {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--accent);
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+.sect-title {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
 
-        /* Entry headers */
-        .entry-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-top: 8px;
-        }
-        .entry-title { font-weight: 700; font-size: 0.95em; }
-        .date { font-size: 0.9em; color: var(--gray); white-space: nowrap; }
-        .subtitle { font-style: italic; color: var(--light-gray); font-size: 0.88em; margin-bottom: 3px; }
+/* ─── ENTRY ITEMS ─── */
+.entry {
+  margin-bottom: 2rem;
+  padding: 1.6rem 1.8rem;
+  background: var(--paper-warm);
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  transition: border-color 0.3s, background 0.4s var(--ease);
+}
+.entry:hover { border-color: var(--ink-faint); }
+.entry-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.4rem;
+}
+.entry h3 {
+  font-family: var(--serif);
+  font-size: 1.12rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.entry-date {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  white-space: nowrap;
+  padding: 3px 10px;
+  background: var(--paper-deep);
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.entry-sub {
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--ink-muted);
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+.entry-degree {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+}
+.entry ul {
+  list-style: none;
+  padding: 0;
+}
+.entry ul li {
+  position: relative;
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  padding: 0.35rem 0 0.35rem 1.2rem;
+  border-top: 1px solid var(--rule);
+}
+.entry ul li:first-child { border-top: none; }
+.entry ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.95rem;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.5;
+}
+.entry ul li strong { color: var(--ink); font-weight: 600; }
+.entry-highlight {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 2px;
+  color: var(--pass);
+  background: var(--pass-bg);
+  border: 1px solid var(--pass-border);
+  display: inline-block;
+  margin-top: 0.5rem;
+}
 
-        /* Bullets */
-        ul { list-style: none; padding-left: 14px; }
-        ul li {
-            position: relative;
-            font-size: 0.88em;
-            margin-bottom: 3px;
-            padding-left: 12px;
-            line-height: 1.45;
-        }
-        ul li::before {
-            content: "\2022";
-            position: absolute;
-            left: 0;
-            color: var(--dark);
-        }
+/* ─── SKILL GROUPS ─── */
+.skill-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.skill-group {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.8rem 0;
+  border-top: 1px solid var(--rule);
+}
+.skill-group:first-child { border-top: none; }
+.skill-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  min-width: 160px;
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.skill-tag {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  padding: 4px 10px;
+  border-radius: 2px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  transition: all 0.2s;
+}
+.skill-tag:hover {
+  background: var(--accent);
+  color: var(--paper);
+}
 
-        /* Skills table */
-        .skill-row {
-            display: flex;
-            font-size: 0.88em;
-            margin-bottom: 2px;
-            line-height: 1.4;
-        }
-        .skill-label {
-            font-weight: 700;
-            min-width: 190px;
-            flex-shrink: 0;
-        }
-        .skill-value { color: var(--gray); }
+/* ─── CERTIFICATIONS ─── */
+.cert-list {
+  display: flex;
+  flex-direction: column;
+}
+.cert-item {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--rule);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.cert-item:first-child { border-top: none; }
+.cert-num {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: var(--accent);
+  opacity: 0.4;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 2px;
+}
+.cert-item strong { color: var(--ink); font-weight: 600; }
 
-        strong { font-weight: 700; }
+/* ─── WRITINGS ─── */
+.writings-sect {
+  margin-top: 4.5rem;
+  padding-top: 3rem;
+  border-top: 2px solid var(--ink);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.writings-sect.is-visible { opacity: 1; transform: translateY(0); }
+.writings-head {
+  margin-bottom: 2rem;
+}
+.writings-head h2 {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+.writings-head p {
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+.writings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.2rem;
+}
+.writing-card {
+  display: block;
+  padding: 1.8rem;
+  background: var(--paper-warm);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s var(--ease);
+  position: relative;
+}
+.writing-card:hover {
+  border-color: var(--accent-border);
+  background: var(--paper-deep);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+.writing-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+.writing-tag {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--info);
+  background: var(--info-bg);
+  border: 1px solid var(--info-border);
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+.writing-date {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.04em;
+}
+.writing-card h3 {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.6rem;
+  color: var(--ink);
+}
+.writing-card p {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--ink-muted);
+  margin-bottom: 1rem;
+}
+.writing-arrow {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  transition: letter-spacing 0.3s var(--ease);
+}
+.writing-card:hover .writing-arrow { letter-spacing: 0.12em; }
 
-        /* Site nav footer */
-        .site-nav {
-            max-width: var(--max-w);
-            margin: 12px auto 30px;
-            padding: 12px 20px;
-            text-align: center;
-            font-size: 0.82em;
-            color: var(--light-gray);
-        }
-        .site-nav a {
-            color: var(--blue);
-            text-decoration: none;
-            margin: 0 8px;
-        }
-        .site-nav a:hover { text-decoration: underline; }
-        @media print { .site-nav { display: none; } }
+/* ─── FOOTER ─── */
+.foot {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.foot-brand {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.foot-motto {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--ink-faint);
+}
 
-    </style>
+/* ─── PRINT ─── */
+@media print {
+  body { background: white; }
+  .topbar, .writings-sect, .foot, .theme-btn { display: none; }
+  .hero { padding-top: 2rem; }
+  .sect { opacity: 1; transform: none; margin-top: 2rem; }
+  .entry { background: none; border: 1px solid #ddd; }
+  .entry:hover { border-color: #ddd; }
+  .skill-tag { border-color: #ccc; background: #f5f5f5; }
+  .entry-date { background: #f0f0f0; }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 680px) {
+  .hero { padding: 3rem 1.2rem 2rem; }
+  .hero h1 { font-size: 2.8rem; }
+  .topbar-inner, .content, .foot { padding-left: 1.2rem; padding-right: 1.2rem; }
+  .entry { padding: 1.2rem; }
+  .entry-top { flex-direction: column; gap: 0.3rem; }
+  .entry-date { align-self: flex-start; }
+  .skill-group { flex-direction: column; gap: 0.5rem; }
+  .skill-label { min-width: auto; }
+  .writings-grid { grid-template-columns: 1fr; }
+  .foot { flex-direction: column; text-align: center; }
+  .sect-num { font-size: 1.8rem; }
+  .hero-contact { flex-direction: column; gap: 0.3rem; }
+  .hero-contact .sep { display: none; }
+}
+</style>
 </head>
 <body>
 
-<div class="page">
-    <header>
-        <h1>LIUWEI (Liu Wei)</h1>
-        <div class="tagline">AI & Full-Stack Developer | Computer Science Student</div>
-        <div class="contact">
-            <a href="mailto:sunflowerslw0607@gmail.com">sunflowerslw0607@gmail.com</a>
-            <span class="sep">|</span>
-            +60 18-782-6582
-            <span class="sep">|</span>
-            <a href="https://linkedin.com/in/liu-wei-936468338" target="_blank">LinkedIn</a>
-            <span class="sep">|</span>
-            <a href="https://github.com/SunflowersLwtech" target="_blank">GitHub</a>
-        </div>
-    </header>
-
-    <!-- About Me -->
-    <div class="section">
-        <div class="section-title">About Me</div>
-        <p style="font-size:0.9em;">
-            Solid foundation in AI theory with extensive project experience, specializing in
-            <strong>deep learning</strong>, <strong>computer vision</strong>, and
-            <strong>large language model applications</strong>.
-            Complete experience from model selection, optimization, deployment to full-stack AI application development.
-            Passionate about solving technical challenges in high-performance AI systems, eager to create value in real business scenarios.
-        </p>
+<!-- TOPBAR -->
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">Liu <span>Wei</span></div>
+    <div class="topbar-right">
+      <a class="nav-link active" href="#">Resume</a>
+      <a class="nav-link" href="#writings">Writings</a>
+      <div class="divider-dot"></div>
+      <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme">&#9790;</button>
     </div>
-
-    <!-- Education -->
-    <div class="section">
-        <div class="section-title">Education</div>
-        <div class="entry-header">
-            <span class="entry-title">Asia Pacific University (APU) & De Montfort University (DMU), Malaysia</span>
-            <span class="date">2024–2027 (Expected)</span>
-        </div>
-        <div style="font-weight:700; font-size:0.9em;">Bachelor of Science (Hons) in Computer Science (Dual Degree)</div>
-        <ul>
-            <li><strong>CGPA: 3.88 / 4.00</strong> (First Class Honours) | Entrance Scholarship Recipient | VC List Awardee</li>
-        </ul>
-    </div>
-
-    <!-- Hackathon -->
-    <div class="section">
-        <div class="section-title">Hackathon & Competition</div>
-        <div class="entry-header">
-            <span class="entry-title">Deriv AI Hackathon 2026 — Finalist (Top 4–7)</span>
-            <span class="date">Feb 2026</span>
-        </div>
-        <div class="subtitle">Team: TradeIQ | Cyberjaya, Malaysia | Core Developer & AI Pipeline Architect</div>
-        <ul>
-            <li>Built <strong>"TradeIQ"</strong>, an AI-powered intelligent trading platform for retail traders — awarded <strong>RM 2,000</strong> prize as Finalist</li>
-            <li>Designed a <strong>5-agent AI pipeline</strong> (Market Monitor → Event Analyst → Portfolio Advisor → Behavioral Sentinel → Content Creator) using <strong>DeepSeek V3</strong> with streaming function calling</li>
-            <li>Developed flagship <strong>"Trading Twin"</strong> feature: dual equity curve simulation comparing impulsive vs. disciplined trading, with AI-generated behavioral narratives</li>
-            <li><strong>Tech Stack</strong>: Next.js 16, React 19, Django 5, Django Channels (WebSocket), Supabase PostgreSQL, Upstash Redis, Deriv WebSocket API, Bluesky AT Protocol</li>
-            <li><strong>Delivered full-stack product in 24 hours</strong>: real-time market analysis, behavioral coaching with risk scoring, and social content engine with one-click publishing</li>
-        </ul>
-    </div>
-
-    <!-- Internship -->
-    <div class="section">
-        <div class="section-title">Internship Experience</div>
-
-        <div class="entry-header">
-            <span class="entry-title">Kuayue Xingkong (Hangzhou) Technology Co., Ltd.</span>
-            <span class="date">Sep 2025–Feb 2026</span>
-        </div>
-        <div class="subtitle">Large Language Model Algorithm Engineer</div>
-        <ul>
-            <li><strong>LLM Application & Optimization</strong>: Prompt engineering, CoT logic; Fine-tuned GPT, Gemini, DeepSeek; Built RAG with LangChain/LlamaIndex; LoRA/QLoRA/PEFT; Optimized inference (TensorRT, vLLM, DeepSpeed)</li>
-            <li><strong>Agent System Development</strong>: Multi-agent architecture (Planner/Executor/Tool-Using Agent); Agent memory systems; Function Calling/Tool Use integrating APIs, databases, code execution</li>
-            <li><strong>Backend & API</strong>: Python (FastAPI/Flask) + Node.js (Express/NestJS); PostgreSQL/MongoDB/Redis; Async queues (Celery/asyncio); Streaming (SSE/WebSocket)</li>
-            <li><strong>Frontend & DevOps</strong>: React/Next.js/Vue/TailwindCSS; Docker/K8s CI/CD; AWS/GCP/Vercel; Defined AI product architecture from scratch</li>
-        </ul>
-    </div>
-
-    <!-- Skills -->
-    <div class="section">
-        <div class="section-title">Skills</div>
-        <div class="skill-row"><span class="skill-label">Programming Languages</span><span class="skill-value">Python, TypeScript, JavaScript, Java, C, SQL</span></div>
-        <div class="skill-row"><span class="skill-label">Backend Development</span><span class="skill-value">NestJS, FastAPI, Django, Node.js, Socket.IO, Microservices</span></div>
-        <div class="skill-row"><span class="skill-label">Frontend Development</span><span class="skill-value">React, Next.js, Redux Toolkit, Tailwind CSS, Streamlit</span></div>
-        <div class="skill-row"><span class="skill-label">Database & Cache</span><span class="skill-value">PostgreSQL, Supabase, TypeORM, Redis, MongoDB</span></div>
-        <div class="skill-row"><span class="skill-label">Deep Learning</span><span class="skill-value">TensorFlow, PyTorch, CUDA, GPU Accel., TensorRT, vLLM, DeepSpeed</span></div>
-        <div class="skill-row"><span class="skill-label">Computer Vision</span><span class="skill-value">DeepFace, FasNet, RetinaFace, MTCNN, Emotion Recognition, Liveness Detection</span></div>
-        <div class="skill-row"><span class="skill-label">NLP & LLM</span><span class="skill-value">GPT-4, Claude, Gemini, DeepSeek, Deepgram STT/TTS, RAG, LoRA/QLoRA/PEFT</span></div>
-        <div class="skill-row"><span class="skill-label">AI Frameworks & Tools</span><span class="skill-value">LangChain, LlamaIndex, Ollama, Function Calling, Multi-Agent Systems</span></div>
-        <div class="skill-row"><span class="skill-label">Cloud Native & DevOps</span><span class="skill-value">GCP (Vertex AI), AWS, Docker, Kubernetes, CI/CD, Git</span></div>
-    </div>
-
-    <!-- Project Experience -->
-    <div class="section">
-        <div class="section-title">Project Experience</div>
-
-        <div class="entry-header">
-            <span class="entry-title">SynCVE — Real-time Emotion Recognition & Anti-Spoofing System</span>
-            <span class="date">2025–Present</span>
-        </div>
-        <div class="subtitle">Core Developer & AI Algorithm Lead</div>
-        <ul>
-            <li>Integrated <strong>DeepFace</strong> and <strong>FasNet</strong> anti-spoofing model, achieving <strong>85–95% accuracy</strong> for 7 core emotions and efficient liveness detection</li>
-            <li>Configured <strong>CUDA 11.8</strong> GPU acceleration for TensorFlow & PyTorch; reduced detection latency from 15s to <strong>1–2s</strong> (<strong>87% improvement</strong>)</li>
-            <li>Diagnosed and resolved PyTorch CUDA initialization failure (WinError 127); created environment configuration documentation</li>
-        </ul>
-
-        <div class="entry-header">
-            <span class="entry-title">SynPod — AI-Driven Intelligent Travel Voice Assistant Platform</span>
-            <span class="date">2025–Present</span>
-        </div>
-        <div class="subtitle">Core Developer & AI Algorithm Lead</div>
-        <ul>
-            <li>Integrated <strong>OpenAI GPT-4</strong> (Function Calling) and <strong>Deepgram Nova-2 (STT) / Aura-2 (TTS)</strong> APIs for real-time voice interaction and podcast generation</li>
-            <li>Designed production-grade <strong>Token Bucket</strong> rate controller and <strong>FSM</strong> with 5 states for complex generation workflows</li>
-            <li>Achieved <strong>&lt;300ms latency</strong> voice interruption via persistent WebSocket, intelligent text chunking, and content prefetching</li>
-        </ul>
-
-        <div class="entry-header">
-            <span class="entry-title">SynText — AI-Driven Enterprise Real-time Translation SaaS Platform</span>
-            <span class="date">2024–Present</span>
-        </div>
-        <div class="subtitle">Project Lead & Chief Architect</div>
-        <ul>
-            <li>Led NestJS microservices with PostgreSQL and Redis, achieved <strong>millisecond-level API response</strong></li>
-            <li>Self-developed speech-to-text engine; integrated and optimized <strong>DeepSeek AI</strong> for translation; designed subscription tiers for commercialization</li>
-        </ul>
-
-        <div class="entry-header">
-            <span class="entry-title">Malaysia Smart Tourism AI Assistant</span>
-            <span class="date">2025–Present</span>
-        </div>
-        <div class="subtitle">Core Developer & AI Algorithm Lead</div>
-        <ul>
-            <li>Fine-tuned <strong>Gemini 2.5 Flash</strong> on <strong>Google Vertex AI</strong> for Malaysian context; designed four-stage dialogue engine with multimodal interaction (FastAPI + Streamlit)</li>
-        </ul>
-
-        <div class="entry-header">
-            <span class="entry-title">AIT Systems — Intelligent Enterprise Management Platform (with Daikin Industries)</span>
-            <span class="date">2025–Present</span>
-        </div>
-        <div class="subtitle">Technical Lead</div>
-        <ul>
-            <li>Designed TypeScript-based microservices + RAG stack with <strong>Ollama</strong> local LLM; RBAC data security; enterprise AI assistant for knowledge retrieval</li>
-        </ul>
-    </div>
-
-    <!-- Certifications -->
-    <div class="section">
-        <div class="section-title">Certifications</div>
-        <ul>
-            <li><strong>Python for Everybody Specialization</strong> — University of Michigan</li>
-            <li><strong>C for Everyone: Programming Fundamentals</strong> — UC Santa Cruz</li>
-            <li><strong>Introduction to Networking</strong> — NVIDIA</li>
-        </ul>
-    </div>
-</div>
-
-<nav class="site-nav no-print">
-    📄 <a href="ai-coding-policy.html">AI-Assisted Development Policy</a>
+  </div>
 </nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-label">Personal Portfolio &amp; Resume</div>
+  <h1>Liu <em>Wei</em></h1>
+  <div class="hero-role">AI & Full-Stack Developer &nbsp;|&nbsp; Computer Science Student</div>
+  <p class="hero-about">
+    Solid foundation in AI theory with extensive project experience, specializing in
+    <strong>deep learning</strong>, <strong>computer vision</strong>, and
+    <strong>large language model applications</strong>.
+    Complete experience from model selection, optimization, deployment to full-stack AI application development.
+    Passionate about solving technical challenges in high-performance AI systems, eager to create value in real business scenarios.
+  </p>
+  <div class="hero-contact">
+    <a href="mailto:sunflowerslw0607@gmail.com">sunflowerslw0607@gmail.com</a>
+    <span class="sep">/</span>
+    <span style="color:var(--ink-soft)">+60 18-782-6582</span>
+    <span class="sep">/</span>
+    <a href="https://linkedin.com/in/liu-wei-936468338" target="_blank">LinkedIn</a>
+    <span class="sep">/</span>
+    <a href="https://github.com/SunflowersLwtech" target="_blank">GitHub</a>
+  </div>
+</header>
+<hr class="hero-rule">
+
+<!-- MAIN CONTENT -->
+<main class="content">
+
+<!-- § 1 — EDUCATION -->
+<section class="sect" id="education">
+  <div class="sect-head">
+    <div class="sect-num">01</div>
+    <h2 class="sect-title">Education</h2>
+  </div>
+  <div class="entry">
+    <div class="entry-top">
+      <h3>Asia Pacific University (APU) & De Montfort University (DMU), Malaysia</h3>
+      <span class="entry-date">2024 – 2027 (Expected)</span>
+    </div>
+    <div class="entry-degree">Bachelor of Science (Hons) in Computer Science (Dual Degree)</div>
+    <ul>
+      <li><strong>CGPA: 3.88 / 4.00</strong> (First Class Honours) &nbsp;|&nbsp; Entrance Scholarship Recipient &nbsp;|&nbsp; VC List Awardee</li>
+    </ul>
+  </div>
+</section>
+
+<!-- § 2 — COMPETITION -->
+<section class="sect" id="competition">
+  <div class="sect-head">
+    <div class="sect-num">02</div>
+    <h2 class="sect-title">Hackathon & Competition</h2>
+  </div>
+  <div class="entry">
+    <div class="entry-top">
+      <h3>Deriv AI Hackathon 2026 — Finalist (Top 4–7)</h3>
+      <span class="entry-date">Feb 2026</span>
+    </div>
+    <div class="entry-sub">Team: TradeIQ &nbsp;|&nbsp; Cyberjaya, Malaysia &nbsp;|&nbsp; Core Developer & AI Pipeline Architect</div>
+    <ul>
+      <li>Built <strong>"TradeIQ"</strong>, an AI-powered intelligent trading platform for retail traders — awarded <strong>RM 2,000</strong> prize as Finalist</li>
+      <li>Designed a <strong>5-agent AI pipeline</strong> (Market Monitor &rarr; Event Analyst &rarr; Portfolio Advisor &rarr; Behavioral Sentinel &rarr; Content Creator) using <strong>DeepSeek V3</strong> with streaming function calling</li>
+      <li>Developed flagship <strong>"Trading Twin"</strong> feature: dual equity curve simulation comparing impulsive vs. disciplined trading, with AI-generated behavioral narratives</li>
+      <li><strong>Tech Stack</strong>: Next.js 16, React 19, Django 5, Django Channels (WebSocket), Supabase PostgreSQL, Upstash Redis, Deriv WebSocket API, Bluesky AT Protocol</li>
+      <li><strong>Delivered full-stack product in 24 hours</strong>: real-time market analysis, behavioral coaching with risk scoring, and social content engine with one-click publishing</li>
+    </ul>
+  </div>
+</section>
+
+<!-- § 3 — EXPERIENCE -->
+<section class="sect" id="experience">
+  <div class="sect-head">
+    <div class="sect-num">03</div>
+    <h2 class="sect-title">Internship Experience</h2>
+  </div>
+  <div class="entry">
+    <div class="entry-top">
+      <h3>Kuayue Xingkong (Hangzhou) Technology Co., Ltd.</h3>
+      <span class="entry-date">Sep 2025 – Feb 2026</span>
+    </div>
+    <div class="entry-sub">Large Language Model Algorithm Engineer</div>
+    <ul>
+      <li><strong>LLM Application & Optimization</strong>: Prompt engineering, CoT logic; Fine-tuned GPT, Gemini, DeepSeek; Built RAG with LangChain/LlamaIndex; LoRA/QLoRA/PEFT; Optimized inference (TensorRT, vLLM, DeepSpeed)</li>
+      <li><strong>Agent System Development</strong>: Multi-agent architecture (Planner/Executor/Tool-Using Agent); Agent memory systems; Function Calling/Tool Use integrating APIs, databases, code execution</li>
+      <li><strong>Backend & API</strong>: Python (FastAPI/Flask) + Node.js (Express/NestJS); PostgreSQL/MongoDB/Redis; Async queues (Celery/asyncio); Streaming (SSE/WebSocket)</li>
+      <li><strong>Frontend & DevOps</strong>: React/Next.js/Vue/TailwindCSS; Docker/K8s CI/CD; AWS/GCP/Vercel; Defined AI product architecture from scratch</li>
+    </ul>
+  </div>
+</section>
+
+<!-- § 4 — PROJECTS -->
+<section class="sect" id="projects">
+  <div class="sect-head">
+    <div class="sect-num">04</div>
+    <h2 class="sect-title">Project Experience</h2>
+  </div>
+
+  <div class="entry">
+    <div class="entry-top">
+      <h3>SynCVE — Real-time Emotion Recognition & Anti-Spoofing System</h3>
+      <span class="entry-date">2025 – Present</span>
+    </div>
+    <div class="entry-sub">Core Developer & AI Algorithm Lead</div>
+    <ul>
+      <li>Integrated <strong>DeepFace</strong> and <strong>FasNet</strong> anti-spoofing model, achieving <strong>85–95% accuracy</strong> for 7 core emotions and efficient liveness detection</li>
+      <li>Configured <strong>CUDA 11.8</strong> GPU acceleration for TensorFlow & PyTorch; reduced detection latency from 15s to <strong>1–2s</strong> (<strong>87% improvement</strong>)</li>
+      <li>Diagnosed and resolved PyTorch CUDA initialization failure (WinError 127); created environment configuration documentation</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-top">
+      <h3>SynPod — AI-Driven Intelligent Travel Voice Assistant Platform</h3>
+      <span class="entry-date">2025 – Present</span>
+    </div>
+    <div class="entry-sub">Core Developer & AI Algorithm Lead</div>
+    <ul>
+      <li>Integrated <strong>OpenAI GPT-4</strong> (Function Calling) and <strong>Deepgram Nova-2 (STT) / Aura-2 (TTS)</strong> APIs for real-time voice interaction and podcast generation</li>
+      <li>Designed production-grade <strong>Token Bucket</strong> rate controller and <strong>FSM</strong> with 5 states for complex generation workflows</li>
+      <li>Achieved <strong>&lt;300ms latency</strong> voice interruption via persistent WebSocket, intelligent text chunking, and content prefetching</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-top">
+      <h3>SynText — AI-Driven Enterprise Real-time Translation SaaS Platform</h3>
+      <span class="entry-date">2024 – Present</span>
+    </div>
+    <div class="entry-sub">Project Lead & Chief Architect</div>
+    <ul>
+      <li>Led NestJS microservices with PostgreSQL and Redis, achieved <strong>millisecond-level API response</strong></li>
+      <li>Self-developed speech-to-text engine; integrated and optimized <strong>DeepSeek AI</strong> for translation; designed subscription tiers for commercialization</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-top">
+      <h3>Malaysia Smart Tourism AI Assistant</h3>
+      <span class="entry-date">2025 – Present</span>
+    </div>
+    <div class="entry-sub">Core Developer & AI Algorithm Lead</div>
+    <ul>
+      <li>Fine-tuned <strong>Gemini 2.5 Flash</strong> on <strong>Google Vertex AI</strong> for Malaysian context; designed four-stage dialogue engine with multimodal interaction (FastAPI + Streamlit)</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-top">
+      <h3>AIT Systems — Intelligent Enterprise Management Platform (with Daikin Industries)</h3>
+      <span class="entry-date">2025 – Present</span>
+    </div>
+    <div class="entry-sub">Technical Lead</div>
+    <ul>
+      <li>Designed TypeScript-based microservices + RAG stack with <strong>Ollama</strong> local LLM; RBAC data security; enterprise AI assistant for knowledge retrieval</li>
+    </ul>
+  </div>
+</section>
+
+<!-- § 5 — SKILLS -->
+<section class="sect" id="skills">
+  <div class="sect-head">
+    <div class="sect-num">05</div>
+    <h2 class="sect-title">Skills</h2>
+  </div>
+  <div class="skill-groups">
+    <div class="skill-group">
+      <div class="skill-label">Programming Languages</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">TypeScript</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">C</span>
+        <span class="skill-tag">SQL</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-label">Backend</div>
+      <div class="skill-tags">
+        <span class="skill-tag">NestJS</span>
+        <span class="skill-tag">FastAPI</span>
+        <span class="skill-tag">Django</span>
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">Socket.IO</span>
+        <span class="skill-tag">Microservices</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-label">Frontend</div>
+      <div class="skill-tags">
+        <span class="skill-tag">React</span>
+        <span class="skill-tag">Next.js</span>
+        <span class="skill-tag">Redux Toolkit</span>
+        <span class="skill-tag">Tailwind CSS</span>
+        <span class="skill-tag">Streamlit</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-label">Database & Cache</div>
+      <div class="skill-tags">
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">Supabase</span>
+        <span class="skill-tag">TypeORM</span>
+        <span class="skill-tag">Redis</span>
+        <span class="skill-tag">MongoDB</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-label">Deep Learning</div>
+      <div class="skill-tags">
+        <span class="skill-tag">TensorFlow</span>
+        <span class="skill-tag">PyTorch</span>
+        <span class="skill-tag">CUDA</span>
+        <span class="skill-tag">TensorRT</span>
+        <span class="skill-tag">vLLM</span>
+        <span class="skill-tag">DeepSpeed</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-label">Computer Vision</div>
+      <div class="skill-tags">
+        <span class="skill-tag">DeepFace</span>
+        <span class="skill-tag">FasNet</span>
+        <span class="skill-tag">RetinaFace</span>
+        <span class="skill-tag">MTCNN</span>
+        <span class="skill-tag">Emotion Recognition</span>
+        <span class="skill-tag">Liveness Detection</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-label">NLP & LLM</div>
+      <div class="skill-tags">
+        <span class="skill-tag">GPT-4</span>
+        <span class="skill-tag">Claude</span>
+        <span class="skill-tag">Gemini</span>
+        <span class="skill-tag">DeepSeek</span>
+        <span class="skill-tag">Deepgram STT/TTS</span>
+        <span class="skill-tag">RAG</span>
+        <span class="skill-tag">LoRA/QLoRA/PEFT</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-label">AI Frameworks</div>
+      <div class="skill-tags">
+        <span class="skill-tag">LangChain</span>
+        <span class="skill-tag">LlamaIndex</span>
+        <span class="skill-tag">Ollama</span>
+        <span class="skill-tag">Function Calling</span>
+        <span class="skill-tag">Multi-Agent Systems</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-label">Cloud & DevOps</div>
+      <div class="skill-tags">
+        <span class="skill-tag">GCP (Vertex AI)</span>
+        <span class="skill-tag">AWS</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Kubernetes</span>
+        <span class="skill-tag">CI/CD</span>
+        <span class="skill-tag">Git</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- § 6 — CERTIFICATIONS -->
+<section class="sect" id="certifications">
+  <div class="sect-head">
+    <div class="sect-num">06</div>
+    <h2 class="sect-title">Certifications</h2>
+  </div>
+  <div class="cert-list">
+    <div class="cert-item">
+      <div class="cert-num">1</div>
+      <div><strong>Python for Everybody Specialization</strong> — University of Michigan</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-num">2</div>
+      <div><strong>C for Everyone: Programming Fundamentals</strong> — UC Santa Cruz</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-num">3</div>
+      <div><strong>Introduction to Networking</strong> — NVIDIA</div>
+    </div>
+  </div>
+</section>
+
+<!-- WRITINGS -->
+<section class="writings-sect" id="writings">
+  <div class="writings-head">
+    <h2>Writings & Thoughts</h2>
+    <p>Articles on engineering practice, AI tooling, and development philosophy.</p>
+  </div>
+  <div class="writings-grid">
+    <a class="writing-card" href="ai-coding-policy.html">
+      <div class="writing-meta">
+        <span class="writing-tag">Engineering Practice</span>
+        <span class="writing-date">2025</span>
+      </div>
+      <h3>My AI-Assisted Development Policy</h3>
+      <p>A personal framework for using AI coding tools responsibly — how I stay productive without losing engineering rigor, and the rules I hold myself to.</p>
+      <span class="writing-arrow">Read &rarr;</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="foot-brand">Liu Wei &mdash; 2025</div>
+  <div class="foot-motto">Build with intention, ship with confidence.</div>
+</footer>
+
+<script>
+let currentTheme = 'light';
+
+function toggleTheme() {
+  currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+  if (currentTheme === 'dark') {
+    document.body.setAttribute('data-theme', 'dark');
+    document.getElementById('themeBtn').innerHTML = '&#9788;';
+  } else {
+    document.body.removeAttribute('data-theme');
+    document.getElementById('themeBtn').innerHTML = '&#9790;';
+  }
+}
+
+function observeSections() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.sect:not(.is-visible), .writings-sect:not(.is-visible)').forEach(el => observer.observe(el));
+}
+
+document.addEventListener('DOMContentLoaded', observeSections);
+</script>
 
 </body>
 </html>
