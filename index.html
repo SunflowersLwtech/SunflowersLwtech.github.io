@@ -134,82 +134,10 @@
         .site-nav a:hover { text-decoration: underline; }
         @media print { .site-nav { display: none; } }
 
-        /* Password gate */
-        #lock-screen {
-            position: fixed;
-            inset: 0;
-            background: #f4f4f4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-        }
-        .lock-box {
-            background: #fff;
-            padding: 40px 36px;
-            border-radius: 8px;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-            text-align: center;
-            max-width: 380px;
-            width: 90%;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-        .lock-box h2 {
-            color: var(--blue);
-            font-size: 1.3em;
-            margin-bottom: 6px;
-        }
-        .lock-box .lock-hint {
-            font-size: 0.82em;
-            color: var(--light-gray);
-            margin-bottom: 18px;
-            line-height: 1.5;
-        }
-        .lock-box input {
-            width: 100%;
-            padding: 10px 14px;
-            border: 1.5px solid #ccc;
-            border-radius: 5px;
-            font-size: 0.95em;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        .lock-box input:focus { border-color: var(--blue); }
-        .lock-box button {
-            margin-top: 12px;
-            width: 100%;
-            padding: 10px;
-            background: var(--blue);
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-size: 0.95em;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .lock-box button:hover { background: #002277; }
-        .lock-box .lock-error {
-            color: #c00;
-            font-size: 0.82em;
-            margin-top: 8px;
-            display: none;
-        }
-        #resume-content { display: none; }
     </style>
 </head>
 <body>
 
-<div id="lock-screen">
-    <div class="lock-box">
-        <h2>Access Protected</h2>
-        <p class="lock-hint">This resume is for the Mistral AI competition review.<br>Please enter my Discord username used in the application (all lowercase).</p>
-        <input type="password" id="pw-input" placeholder="Enter password" autocomplete="off">
-        <button id="pw-btn">Unlock</button>
-        <p class="lock-error" id="pw-error">Incorrect password. Please try again.</p>
-    </div>
-</div>
-
-<div id="resume-content">
 <div class="page">
     <header>
         <h1>LIUWEI (Liu Wei)</h1>
@@ -270,17 +198,6 @@
     <!-- Internship -->
     <div class="section">
         <div class="section-title">Internship Experience</div>
-
-        <div class="entry-header">
-            <span class="entry-title">Junao Panshi — Inbird Embodied AI Researcher</span>
-            <span class="date">Nov 2025–Present</span>
-        </div>
-        <div class="subtitle">Embodied AI Researcher</div>
-        <ul>
-            <li><strong>Voice System Architecture</strong>: Independently designed and built the complete voice pipeline, including speech recognition, synthesis, and intermediate reasoning logic</li>
-            <li><strong>Robot Planning</strong>: Conducted LLM evaluation and selection; integrated models into the robot system; designed both high-level task planning and low-level motion planning</li>
-            <li><strong>End-to-End Ownership</strong>: Solely responsible for the full voice chain and inference logic, from model benchmarking to production integration</li>
-        </ul>
 
         <div class="entry-header">
             <span class="entry-title">Kuayue Xingkong (Hangzhou) Technology Co., Ltd.</span>
@@ -374,38 +291,10 @@
         </ul>
     </div>
 </div>
-</div>
 
 <nav class="site-nav no-print">
     📄 <a href="ai-coding-policy.html">AI-Assisted Development Policy</a>
 </nav>
-
-<script>
-(function(){
-    var h='8ce1185454dff74d765af4cfb89416da8c847acb1bcb2d63e1552b90c62a2abc';
-    function s2h(s){
-        var a=new TextEncoder().encode(s);
-        return crypto.subtle.digest('SHA-256',a).then(function(b){
-            return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,'0')}).join('');
-        });
-    }
-    function tryUnlock(){
-        var v=document.getElementById('pw-input').value.toLowerCase().trim();
-        s2h(v).then(function(d){
-            if(d===h){
-                document.getElementById('lock-screen').style.display='none';
-                document.getElementById('resume-content').style.display='block';
-            }else{
-                document.getElementById('pw-error').style.display='block';
-            }
-        });
-    }
-    document.getElementById('pw-btn').addEventListener('click',tryUnlock);
-    document.getElementById('pw-input').addEventListener('keydown',function(e){
-        if(e.key==='Enter')tryUnlock();
-    });
-})();
-</script>
 
 </body>
 </html>
