@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Liu Wei — AI & Full-Stack Developer</title>
-<meta name="description" content="Liu Wei — AI & Full-Stack Developer, Computer Science Student. Specializing in deep learning, computer vision, and large language model applications.">
+<title>Liu Wei — AI Agent Builder & Embodied-AI Researcher</title>
+<meta name="description" content="Liu Wei (刘维) — Founder & CEO at DuoCode Technology, Embodied-AI Researcher at EBKernel. APU CS (3-yr), Year 2, Cumulative CGPA 3.87/4.00, Vice-Chancellor's List. Builder of production AI agents — voice, embodied, multi-agent.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -164,6 +164,15 @@ body {
   font-style: italic;
   color: var(--accent);
 }
+.hero h1 .cn {
+  font-family: var(--serif);
+  font-size: 0.55em;
+  font-style: normal;
+  color: var(--ink-muted);
+  margin-left: 0.4em;
+  letter-spacing: 0.02em;
+  vertical-align: 0.12em;
+}
 .hero-role {
   font-family: var(--serif);
   font-size: 1.2rem;
@@ -175,7 +184,7 @@ body {
   font-size: 1.02rem;
   line-height: 1.9;
   color: var(--ink-soft);
-  max-width: 620px;
+  max-width: 660px;
   margin-bottom: 2rem;
 }
 .hero-about strong { color: var(--ink); font-weight: 600; }
@@ -287,6 +296,11 @@ body {
   flex-shrink: 0;
   margin-top: 2px;
 }
+.entry-date.ongoing {
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+}
 .entry-sub {
   font-size: 0.88rem;
   font-style: italic;
@@ -340,6 +354,118 @@ body {
   margin-top: 0.5rem;
 }
 
+/* ─── AWARDS LIST ─── */
+.award-list {
+  display: flex;
+  flex-direction: column;
+}
+.award-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.9rem;
+  align-items: baseline;
+  padding: 0.95rem 0;
+  border-top: 1px solid var(--rule);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.award-item:first-child { border-top: none; }
+.award-num {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: var(--accent);
+  opacity: 0.55;
+  flex-shrink: 0;
+  line-height: 1;
+  width: 1.4rem;
+  text-align: center;
+}
+.award-item .body strong { color: var(--ink); font-weight: 600; }
+.award-item .body em { font-style: italic; color: var(--ink-muted); }
+.award-tag {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.award-tag.intl  { color: var(--info); background: var(--info-bg); border: 1px solid var(--info-border); }
+.award-tag.nat   { color: var(--accent); background: var(--accent-bg); border: 1px solid var(--accent-border); }
+.award-tag.uni   { color: var(--pass); background: var(--pass-bg); border: 1px solid var(--pass-border); }
+
+/* ─── OSS GRID ─── */
+.oss-meta {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.02em;
+  margin-bottom: 1rem;
+}
+.oss-meta a { color: var(--accent); text-decoration: none; }
+.oss-meta a:hover { text-decoration: underline; }
+.oss-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.9rem;
+}
+.oss-card {
+  display: block;
+  padding: 1.1rem 1.3rem;
+  background: var(--paper-warm);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.25s var(--ease);
+}
+.oss-card:hover {
+  border-color: var(--accent-border);
+  background: var(--paper-deep);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+.oss-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.4rem;
+  gap: 0.5rem;
+}
+.oss-card h4 {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.oss-card .pin {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+}
+.oss-card .priv {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  font-weight: 600;
+}
+.oss-card p {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.oss-card p strong { color: var(--ink); font-weight: 600; }
+
 /* ─── SKILL GROUPS ─── */
 .skill-groups {
   display: flex;
@@ -361,7 +487,7 @@ body {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-muted);
-  min-width: 160px;
+  min-width: 165px;
   flex-shrink: 0;
   line-height: 1.4;
 }
@@ -386,6 +512,7 @@ body {
   background: var(--accent);
   color: var(--paper);
 }
+.skill-tag.cn { font-family: var(--mono), 'PingFang SC', sans-serif; }
 
 /* ─── CERTIFICATIONS ─── */
 .cert-list {
@@ -541,8 +668,8 @@ body {
   .topbar, .writings-sect, .foot, .theme-btn { display: none; }
   .hero { padding-top: 2rem; }
   .sect { opacity: 1; transform: none; margin-top: 2rem; }
-  .entry { background: none; border: 1px solid #ddd; }
-  .entry:hover { border-color: #ddd; }
+  .entry, .oss-card, .writing-card { background: none; border: 1px solid #ddd; }
+  .entry:hover, .oss-card:hover, .writing-card:hover { border-color: #ddd; }
   .skill-tag { border-color: #ccc; background: #f5f5f5; }
   .entry-date { background: #f0f0f0; }
 }
@@ -557,7 +684,9 @@ body {
   .entry-date { align-self: flex-start; }
   .skill-group { flex-direction: column; gap: 0.5rem; }
   .skill-label { min-width: auto; }
-  .writings-grid { grid-template-columns: 1fr; }
+  .writings-grid, .oss-grid { grid-template-columns: 1fr; }
+  .award-item { grid-template-columns: auto 1fr; }
+  .award-tag { grid-column: 2; }
   .foot { flex-direction: column; text-align: center; }
   .sect-num { font-size: 1.8rem; }
   .hero-contact { flex-direction: column; gap: 0.3rem; }
@@ -583,23 +712,33 @@ body {
 <!-- HERO -->
 <header class="hero">
   <div class="hero-label">Personal Portfolio &amp; Resume</div>
-  <h1>Liu <em>Wei</em></h1>
-  <div class="hero-role">AI & Full-Stack Developer &nbsp;|&nbsp; Computer Science Student</div>
+  <h1>Liu <em>Wei</em><span class="cn">刘维</span></h1>
+  <div class="hero-role">Founder &amp; CEO @ DuoCode &nbsp;·&nbsp; Embodied-AI Researcher @ EBKernel &nbsp;·&nbsp; APU CS, Year 2</div>
   <p class="hero-about">
-    Solid foundation in AI theory with extensive project experience, specializing in
-    <strong>deep learning</strong>, <strong>computer vision</strong>, and
-    <strong>large language model applications</strong>.
-    Complete experience from model selection, optimization, deployment to full-stack AI application development.
-    Passionate about solving technical challenges in high-performance AI systems, eager to create value in real business scenarios.
+    Builder + researcher of production AI agents — <strong>voice, embodied, multi-agent</strong>.
+    Shipped to enterprise (Daikin), startup (iMean Hangzhou), embodied robotics (EBKernel Shanghai),
+    and SME (DuoCode, my own company in Selangor).
+    Currently pivoting <strong>two thrusts in parallel</strong>: (1) honest evaluation of vision-language
+    agents under physics simulation, and (2) <strong>CS-EverySystem</strong> — a drop-in customer-service
+    agent layer targeting Intercom Fin technical parity in 90 days.
+    Methodology-first engineering, evaluation before claims.
   </p>
   <div class="hero-contact">
-    <a href="mailto:sunflowerslw0607@gmail.com">sunflowerslw0607@gmail.com</a>
+    <a href="mailto:weiliu@duocodetech.com">weiliu@duocodetech.com</a>
+    <span class="sep">/</span>
+    <span style="color:var(--ink-soft)">+86 18355366842</span>
     <span class="sep">/</span>
     <span style="color:var(--ink-soft)">+60 18-782-6582</span>
     <span class="sep">/</span>
+    <a href="https://github.com/SunflowersLwtech" target="_blank">GitHub</a>
+    <span class="sep">·</span>
+    <a href="https://github.com/DuoCode2" target="_blank">DuoCode2 (org)</a>
+    <span class="sep">/</span>
     <a href="https://linkedin.com/in/liu-wei-936468338" target="_blank">LinkedIn</a>
     <span class="sep">/</span>
-    <a href="https://github.com/SunflowersLwtech" target="_blank">GitHub</a>
+    <a href="https://x.com/sunflowers0607" target="_blank">X</a>
+    <span class="sep">/</span>
+    <a href="https://duocodetech.com" target="_blank">duocodetech.com</a>
   </div>
 </header>
 <hr class="hero-rule">
@@ -615,252 +754,445 @@ body {
   </div>
   <div class="entry">
     <div class="entry-top">
-      <h3>Asia Pacific University (APU) & De Montfort University (DMU), Malaysia</h3>
-      <span class="entry-date">2024 – 2027 (Expected)</span>
+      <h3>Asia Pacific University of Technology &amp; Innovation (APU), Malaysia</h3>
+      <span class="entry-date ongoing">Nov 2024 – Nov 2027</span>
     </div>
-    <div class="entry-degree">Bachelor of Science (Hons) in Computer Science (Dual Degree)</div>
+    <div class="entry-degree">Bachelor of Science (Honours) in Computer Science · 3-year full-time</div>
     <ul>
-      <li><strong>CGPA: 3.88 / 4.00</strong> (First Class Honours) &nbsp;|&nbsp; Entrance Scholarship Recipient &nbsp;|&nbsp; VC List Awardee</li>
+      <li><strong>Cumulative CGPA: 3.87 / 4.00</strong> (Y2S1 GPA 3.88) — currently <strong>Year 2 (Level 2)</strong>. <strong>Vice-Chancellor's List</strong> (Academic Year 2024/25). First-Class trajectory (≥ 3.70 threshold).</li>
+      <li>Programme Code <strong>R2/0613/6/0055 (06/29) MQA/FA4622</strong> — approved by MoHE Malaysia, accredited by MQA. Medium of instruction: English. Programme completes <strong>before HKUST(GZ) Fall 2027 commencement</strong>.</li>
+      <li>Institutional AI infrastructure: APU provides student access to <strong>NVIDIA DGX Spark units</strong> (128 GB LPDDR5x unified memory) for LLM training.</li>
     </ul>
   </div>
 </section>
 
-<!-- § 2 — COMPETITION -->
-<section class="sect" id="competition">
+<!-- § 2 — FOUNDING -->
+<section class="sect" id="founding">
   <div class="sect-head">
     <div class="sect-num">02</div>
-    <h2 class="sect-title">Hackathon & Competition</h2>
+    <h2 class="sect-title">Founding</h2>
   </div>
   <div class="entry">
     <div class="entry-top">
-      <h3>Deriv AI Hackathon 2026 — Finalist (Top 4–7)</h3>
-      <span class="entry-date">Feb 2026</span>
+      <h3>DuoCode Technology &nbsp;·&nbsp; Founder &amp; CEO &nbsp;·&nbsp; 50% beneficial ownership</h3>
+      <span class="entry-date ongoing">Mar 2026 – Present</span>
     </div>
-    <div class="entry-sub">Team: TradeIQ &nbsp;|&nbsp; Cyberjaya, Malaysia &nbsp;|&nbsp; Core Developer & AI Pipeline Architect</div>
+    <div class="entry-sub">
+      Klang, Selangor, Malaysia &nbsp;·&nbsp; SSM 202603062356 (LA0087244-A) &nbsp;·&nbsp;
+      <a href="https://duocodetech.com" style="color:var(--accent);text-decoration:none;">duocodetech.com</a>
+    </div>
     <ul>
-      <li>Built <strong>"TradeIQ"</strong>, an AI-powered intelligent trading platform for retail traders — awarded <strong>RM 2,000</strong> prize as Finalist</li>
-      <li>Designed a <strong>5-agent AI pipeline</strong> (Market Monitor &rarr; Event Analyst &rarr; Portfolio Advisor &rarr; Behavioral Sentinel &rarr; Content Creator) using <strong>DeepSeek V3</strong> with streaming function calling</li>
-      <li>Developed flagship <strong>"Trading Twin"</strong> feature: dual equity curve simulation comparing impulsive vs. disciplined trading, with AI-generated behavioral narratives</li>
-      <li><strong>Tech Stack</strong>: Next.js 16, React 19, Django 5, Django Channels (WebSocket), Supabase PostgreSQL, Upstash Redis, Deriv WebSocket API, Bluesky AT Protocol</li>
-      <li><strong>Delivered full-stack product in 24 hours</strong>: real-time market analysis, behavioral coaching with risk scoring, and social content engine with one-click publishing</li>
+      <li><strong>pipeline-infra</strong> (public, AGPL-3.0, TypeScript) — autonomous Discover (Google Maps Places API) → Prepare (brand-colour extraction with WCAG enforcement, scaffold) → Design (Claude Code orchestrator + 6 skills) → Finalize (Lighthouse a11y ≥ 95, Vercel REST v13 deploy). <strong>30+ live customer landing pages</strong> in 3 months for Malaysian SMEs across food / beauty / dental / auto / sports / mobile-repair. 19-region locale support; 428 tests.</li>
+      <li><strong>CS-EverySystem</strong> (private beta) — drop-in customer-service agent layer; 11 product pillars; 6 north-star metrics (resolution ≥ 40%, grounded ≥ 90%, p95 ≤ 3 s). Targeting Intercom Fin technical parity in 90 days. Hybrid RAG + multi-layer guardrails + trace-first observability (Langfuse). No LangChain, no provider-locked SDKs, no self-trained models.</li>
+      <li>Drove all <strong>SEO / GEO infrastructure</strong> personally: Cloudflare DNS+CDN, Vercel edge + ISR, schema.org JSON-LD, multi-locale canonical, sitemap + hreflang, Lighthouse-gated a11y / performance budgets.</li>
+      <li>Joint decision authority with co-founder Tang Chye Fong on contracts ≥ RM 5,000, hiring, IP licensing, and investment per signed founders' shareholding agreement (27 April 2026).</li>
     </ul>
+    <span class="entry-highlight">Public org: github.com/DuoCode2</span>
   </div>
 </section>
 
-<!-- § 3 — EXPERIENCE -->
-<section class="sect" id="experience">
+<!-- § 3 — AWARDS -->
+<section class="sect" id="awards">
   <div class="sect-head">
     <div class="sect-num">03</div>
-    <h2 class="sect-title">Internship Experience</h2>
+    <h2 class="sect-title">Awards &amp; Recognition</h2>
   </div>
   <div class="entry">
-    <div class="entry-top">
-      <h3>Kuayue Xingkong (Hangzhou) Technology Co., Ltd.</h3>
-      <span class="entry-date">Sep 2025 – Feb 2026</span>
+    <div class="award-list">
+      <div class="award-item">
+        <div class="award-num">i</div>
+        <div class="body"><strong>APICTA Awards (Malaysia Digital) — Semifinalist</strong>. Vertex AI Gemini fine-tuned Malaysia travel agent (LangChain/LangGraph &middot; n8n). End-to-end pipeline from data acquisition → fine-tune endpoint → agent → deployment.</div>
+        <div class="award-tag nat">National</div>
+      </div>
+      <div class="award-item">
+        <div class="award-num">ii</div>
+        <div class="body"><strong>Deriv AI Hackathon Challenge 2026 — Certificate of Recognition · RM 2,000</strong>. 14–15 Feb 2026, <em>TradeIQ</em> (team lead). Five-agent LLM pipeline + Trading Twin behavioural simulation. Signed by Founder Jean-Yves Sireau and CEO Rakshit Choudhary.</div>
+        <div class="award-tag intl">International</div>
+      </div>
+      <div class="award-item">
+        <div class="award-num">iii</div>
+        <div class="body"><strong>Amazon Nova AI Hackathon 2026 — Bonus Blog Post Prize · USD 200 AWS credits</strong>. <em>NovaTour</em>, voice-first travel planner on Amazon Nova Sonic/Lite/Act + Strands Agents SDK. Announced 10 Apr 2026 via Devpost.</div>
+        <div class="award-tag intl">International</div>
+      </div>
+      <div class="award-item">
+        <div class="award-num">iv</div>
+        <div class="body"><strong>MariaDB Hackathon MY 2026 — Finalist (Grade A)</strong>. <em>seamless-rag</em>: TOON-native auto-embedding &amp; RAG toolkit for MariaDB, leveraging native VECTOR + HNSW. <strong>23–39%</strong> token reduction vs JSON on real datasets (MovieLens, SF Restaurant Violations); 538 tests passing.</div>
+        <div class="award-tag nat">National</div>
+      </div>
+      <div class="award-item">
+        <div class="award-num">v</div>
+        <div class="body"><strong>APU Vice-Chancellor's List</strong>. Excellent Academic Achievement, Academic Year 2024/25. Signed by Vice Chancellor Prof Dr Ho Chin Kuan.</div>
+        <div class="award-tag uni">University</div>
+      </div>
     </div>
-    <div class="entry-sub">Large Language Model Algorithm Engineer</div>
-    <ul>
-      <li><strong>LLM Application & Optimization</strong>: Prompt engineering, CoT logic; Fine-tuned GPT, Gemini, DeepSeek; Built RAG with LangChain/LlamaIndex; LoRA/QLoRA/PEFT; Optimized inference (TensorRT, vLLM, DeepSpeed)</li>
-      <li><strong>Agent System Development</strong>: Multi-agent architecture (Planner/Executor/Tool-Using Agent); Agent memory systems; Function Calling/Tool Use integrating APIs, databases, code execution</li>
-      <li><strong>Backend & API</strong>: Python (FastAPI/Flask) + Node.js (Express/NestJS); PostgreSQL/MongoDB/Redis; Async queues (Celery/asyncio); Streaming (SSE/WebSocket)</li>
-      <li><strong>Frontend & DevOps</strong>: React/Next.js/Vue/TailwindCSS; Docker/K8s CI/CD; AWS/GCP/Vercel; Defined AI product architecture from scratch</li>
-    </ul>
   </div>
 </section>
 
-<!-- § 4 — PROJECTS -->
-<section class="sect" id="projects">
+<!-- § 4 — INTERNSHIPS -->
+<section class="sect" id="experience">
   <div class="sect-head">
     <div class="sect-num">04</div>
-    <h2 class="sect-title">Project Experience</h2>
+    <h2 class="sect-title">Internship &amp; Engagements</h2>
   </div>
 
+  <!-- EBKernel -->
   <div class="entry">
     <div class="entry-top">
-      <h3>SynCVE — Real-time Emotion Recognition & Anti-Spoofing System</h3>
-      <span class="entry-date">2025 – Present</span>
+      <h3>EBKernel · 上海具脑科技有限公司 — Embodied Agent Algorithm Intern</h3>
+      <span class="entry-date ongoing">19 Nov 2025 – Present</span>
     </div>
-    <div class="entry-sub">Core Developer & AI Algorithm Lead</div>
+    <div class="entry-sub">
+      Embodied-AI / Human-Computer Interaction Researcher &nbsp;·&nbsp;
+      Fully remote &nbsp;·&nbsp; 弹性工作制 (flexible hours)
+    </div>
     <ul>
-      <li>Integrated <strong>DeepFace</strong> and <strong>FasNet</strong> anti-spoofing model, achieving <strong>85–95% accuracy</strong> for 7 core emotions and efficient liveness detection</li>
-      <li>Configured <strong>CUDA 11.8</strong> GPU acceleration for TensorFlow & PyTorch; reduced detection latency from 15s to <strong>1–2s</strong> (<strong>87% improvement</strong>)</li>
-      <li>Diagnosed and resolved PyTorch CUDA initialization failure (WinError 127); created environment configuration documentation</li>
+      <li><strong>RynnBrain VLM × OmniGibson eval pipeline</strong> (sub-project from 03/2026): lifted BDDL true success <strong>0% → 80%</strong> by stripping six classes of privileged information (GT segmentation → GSAM open-vocabulary perception; container AABBs → pixel-level snap; teleport → CuRobo trajectory planning). 60+ seeds × 3 BEHAVIOR-1K tasks; documented <strong>28 falsified hypotheses</strong>. Three-machine remote pipeline: Mac ↔ RTX 4090 ↔ H100 cluster (SSH tunnels + rsync; vLLM TP=1).</li>
+      <li><strong>Robot voice interaction</strong>: co-deployed real-time stack on Lejun (乐聚) humanoid for water-fetch / hotel front-desk / reception scenarios. Full domestic localisation: Alibaba Cloud TTS/STT, Agora (声网) RTC, TEN Framework. Researched 3C noise-suppression and microphone directivity at the hardware/software boundary.</li>
+      <li><strong>Multi-cloud GPU-infra collaboration</strong>: worked across <strong>Huawei Cloud</strong> and partnered with the infrastructure teams of <strong>Kuaishou (快手)</strong> and <strong>DataCanvas · 九章云极 (Alaya NeW Cloud)</strong> to debug GPU container scheduling, heterogeneous-compute cluster orchestration (mixed deployment of domestic chips and NVIDIA), and shared-compute inference pipelines.</li>
     </ul>
   </div>
 
+  <!-- iMean -->
   <div class="entry">
     <div class="entry-top">
-      <h3>SynPod — AI-Driven Intelligent Travel Voice Assistant Platform</h3>
-      <span class="entry-date">2025 – Present</span>
+      <h3>iMean · 椰子宇宙（杭州）科技有限公司 — Algorithm Intern (Sole Engineer, Voice Agent)</h3>
+      <span class="entry-date">15 Sep 2025 – 02 Feb 2026</span>
     </div>
-    <div class="entry-sub">Core Developer & AI Algorithm Lead</div>
+    <div class="entry-sub">
+      Algorithm Department (算法部门) &nbsp;·&nbsp; Onsite Hangzhou Sep–Nov 2025 &nbsp;·&nbsp; Remote Dec 2025 – Feb 2026
+    </div>
     <ul>
-      <li>Integrated <strong>OpenAI GPT-4</strong> (Function Calling) and <strong>Deepgram Nova-2 (STT) / Aura-2 (TTS)</strong> APIs for real-time voice interaction and podcast generation</li>
-      <li>Designed production-grade <strong>Token Bucket</strong> rate controller and <strong>FSM</strong> with 5 states for complex generation workflows</li>
-      <li>Achieved <strong>&lt;300ms latency</strong> voice interruption via persistent WebSocket, intelligent text chunking, and content prefetching</li>
+      <li>Owner of the full <strong>Web + iOS</strong> voice-agent stack: cross-tested STT (Deepgram, ElevenLabs, Gemini), TTS (ElevenLabs, ChatGPT TTS), and LLM (GPT-4o, Gemini, Gemini Live cascaded vs. native multimodal).</li>
+      <li>Voice infrastructure across <strong>LiveKit, FastRTC, TEN Framework</strong> — WebSocket and WebRTC underneath. Abstracted OpenAI Agents SDK, Gemini ADK, and LangChain/LangGraph behind a single multi-provider interface so we could swap orchestration without touching business logic.</li>
+      <li>Engineered streamed long-context management, dual-tier (short + long) memory over vector recall, and per-session state machines that switched cadence and tone (podcast tempo, calm voice) based on the detected scene. Earned formal team-lead and company recognition under an ambiguous spec.</li>
     </ul>
   </div>
 
+  <!-- Daikin -->
   <div class="entry">
     <div class="entry-top">
-      <h3>SynText — AI-Driven Enterprise Real-time Translation SaaS Platform</h3>
-      <span class="entry-date">2024 – Present</span>
+      <h3>Daikin (Japan) — Project Lead, Enterprise Systems Engagement (4-Module)</h3>
+      <span class="entry-date ongoing">Jul 2025 – Ongoing</span>
     </div>
-    <div class="entry-sub">Project Lead & Chief Architect</div>
-    <ul>
-      <li>Led NestJS microservices with PostgreSQL and Redis, achieved <strong>millisecond-level API response</strong></li>
-      <li>Self-developed speech-to-text engine; integrated and optimized <strong>DeepSeek AI</strong> for translation; designed subscription tiers for commercialization</li>
-    </ul>
-  </div>
-
-  <div class="entry">
-    <div class="entry-top">
-      <h3>Malaysia Smart Tourism AI Assistant</h3>
-      <span class="entry-date">2025 – Present</span>
+    <div class="entry-sub">
+      Independent project engagement &nbsp;·&nbsp; Ongoing delivery
     </div>
-    <div class="entry-sub">Core Developer & AI Algorithm Lead</div>
     <ul>
-      <li>Fine-tuned <strong>Gemini 2.5 Flash</strong> on <strong>Google Vertex AI</strong> for Malaysian context; designed four-stage dialogue engine with multimodal interaction (FastAPI + Streamlit)</li>
-    </ul>
-  </div>
-
-  <div class="entry">
-    <div class="entry-top">
-      <h3>AIT Systems — Intelligent Enterprise Management Platform (with Daikin Industries)</h3>
-      <span class="entry-date">2025 – Present</span>
-    </div>
-    <div class="entry-sub">Technical Lead</div>
-    <ul>
-      <li>Designed TypeScript-based microservices + RAG stack with <strong>Ollama</strong> local LLM; RBAC data security; enterprise AI assistant for knowledge retrieval</li>
+      <li>Leading delivery across four enterprise modules: <strong>(1)</strong> IoT-device interconnection + sensor data ingest; <strong>(2)</strong> form-assistant + work-order ticketing system; <strong>(3)</strong> internal wiki knowledge base; <strong>(4)</strong> on-prem RAG question-answering assistant (locally deployed Ollama). Own architecture, integration, and cross-team handoff.</li>
     </ul>
   </div>
 </section>
 
-<!-- § 5 — SKILLS -->
-<section class="sect" id="skills">
+<!-- § 5 — OPEN SOURCE -->
+<section class="sect" id="opensource">
   <div class="sect-head">
     <div class="sect-num">05</div>
+    <h2 class="sect-title">Open Source &amp; Selected Works</h2>
+  </div>
+  <p class="oss-meta">
+    Personal: <a href="https://github.com/SunflowersLwtech" target="_blank"><strong>github.com/SunflowersLwtech</strong></a> &nbsp;·&nbsp; 40 repos &nbsp;·&nbsp; 167 ★ &nbsp;|&nbsp;
+    Company org: <a href="https://github.com/DuoCode2" target="_blank"><strong>github.com/DuoCode2</strong></a>
+  </p>
+  <div class="oss-grid">
+
+    <a class="oss-card" href="https://github.com/DuoCode2/pipeline-infra" target="_blank">
+      <div class="oss-card-top">
+        <h4>DuoCode2 / pipeline-infra</h4>
+        <span class="pin">AGPL-3.0 · TS</span>
+      </div>
+      <p>DuoCode growth engine: 4-phase Discover → Prepare → Design → Finalize pipeline. <strong>30+ live SME sites</strong>; 428 tests; 19-region locale.</p>
+    </a>
+
+    <a class="oss-card" href="https://github.com/SunflowersLwtech/polanyi-design" target="_blank">
+      <div class="oss-card-top">
+        <h4>polanyi-design</h4>
+        <span class="pin">Pinned · 5 ★</span>
+      </div>
+      <p>Claude Code Skill — frontend cognitive engine grounded in Michael Polanyi's <strong>tacit-knowledge framework</strong>.</p>
+    </a>
+
+    <a class="oss-card" href="https://github.com/SunflowersLwtech/search-harness" target="_blank">
+      <div class="oss-card-top">
+        <h4>search-harness</h4>
+        <span class="pin">Pinned</span>
+      </div>
+      <p>Agent CLI + skills; <strong>5-track roadmap</strong>: search-result persistence · agent orchestration · native multimodal pass-through · codebase context-search · CUA E2E testing.</p>
+    </a>
+
+    <a class="oss-card" href="https://github.com/MariaDB-Hackathon-MY-2026/seamless-rag" target="_blank">
+      <div class="oss-card-top">
+        <h4>seamless-rag</h4>
+        <span class="pin">MariaDB Finalist</span>
+      </div>
+      <p>MariaDB-native RAG toolkit (VECTOR + HNSW + TOON v3, <strong>23–39% token saving</strong>); 538 tests passing.</p>
+    </a>
+
+    <a class="oss-card" href="https://github.com/SunflowersLwtech/Council" target="_blank">
+      <div class="oss-card-top">
+        <h4>Council</h4>
+        <span class="pin">Multi-agent</span>
+      </div>
+      <p>Local-first multi-agent + multi-user social-deduction game. Mistral AI cognition + <strong>PowerSync 6-stream isolated sync</strong> + 3D rendering.</p>
+    </a>
+
+    <a class="oss-card" href="https://github.com/SunflowersLwtech/SynCVE" target="_blank">
+      <div class="oss-card-top">
+        <h4>SynCVE</h4>
+        <span class="priv">Private · on request</span>
+      </div>
+      <p>Real-time emotion recognition: ensemble OpenCV + SSD fusion · FasNet anti-spoofing · EMA temporal smoothing (α = 0.2, ablation-tuned) · two-stage Gemini reporting · ~1–2 s e2e.</p>
+    </a>
+
+    <a class="oss-card" href="https://github.com/SunflowersLwtech/SightLine" target="_blank">
+      <div class="oss-card-top">
+        <h4>SightLine</h4>
+        <span class="pin">iOS · Accessibility</span>
+      </div>
+      <p>iOS + Gemini Live accessibility platform for the blind. Apple Watch sensors · 18 function-calling tools · adaptive LOD engine.</p>
+    </a>
+
+    <a class="oss-card" href="https://github.com/SunflowersLwtech/TradeIQ" target="_blank">
+      <div class="oss-card-top">
+        <h4>TradeIQ</h4>
+        <span class="pin">Deriv RM 2,000</span>
+      </div>
+      <p>AI-powered trading platform. 5-agent LLM pipeline · DeepSeek V3 streaming · "Trading Twin" dual equity curve simulation. Team lead.</p>
+    </a>
+
+    <a class="oss-card" href="https://github.com/SunflowersLwtech/NovaTour" target="_blank">
+      <div class="oss-card-top">
+        <h4>NovaTour</h4>
+        <span class="pin">AWS USD 200</span>
+      </div>
+      <p>Voice-first travel planner on Amazon Nova Sonic/Lite/Act + Strands Agents SDK + Google Maps tool orchestration.</p>
+    </a>
+
+    <a class="oss-card" href="https://github.com/SunflowersLwtech/arus" target="_blank">
+      <div class="oss-card-top">
+        <h4>arus — Banjir Drill</h4>
+        <span class="pin">Google ADK · Cloud Run</span>
+      </div>
+      <p>Browser-playable Malaysian flood-coordination simulator. Three modes (PLAY / COACH / AUTO) on Gemini 2.5 Pro + Google ADK 1.27 + Veo 3 + Cloud Run.</p>
+    </a>
+
+    <a class="oss-card" href="https://github.com/SunflowersLwtech/Astrolabe" target="_blank">
+      <div class="oss-card-top">
+        <h4>Astrolabe</h4>
+        <span class="pin">Auth0 · RFC 8693</span>
+      </div>
+      <p>Agent observability — RFC 8693 token exchange + Auth0 FGA. Post-authentication audit + scope-bound risk classification.</p>
+    </a>
+
+    <a class="oss-card" href="https://github.com/SunflowersLwtech/mcp_creator_growth" target="_blank">
+      <div class="oss-card-top">
+        <h4>mcp_creator_growth</h4>
+        <span class="pin">MCP · 6 ★</span>
+      </div>
+      <p>Context-aware MCP server: learning sidecar for AI coding assistants. Quizzes + persistent debugging memory.</p>
+    </a>
+
+  </div>
+</section>
+
+<!-- § 6 — SKILLS -->
+<section class="sect" id="skills">
+  <div class="sect-head">
+    <div class="sect-num">06</div>
     <h2 class="sect-title">Skills</h2>
   </div>
   <div class="skill-groups">
+
     <div class="skill-group">
-      <div class="skill-label">Programming Languages</div>
+      <div class="skill-label">ML / DL / RL</div>
       <div class="skill-tags">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">TypeScript</span>
-        <span class="skill-tag">JavaScript</span>
-        <span class="skill-tag">Java</span>
-        <span class="skill-tag">C</span>
-        <span class="skill-tag">SQL</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-label">Backend</div>
-      <div class="skill-tags">
-        <span class="skill-tag">NestJS</span>
-        <span class="skill-tag">FastAPI</span>
-        <span class="skill-tag">Django</span>
-        <span class="skill-tag">Node.js</span>
-        <span class="skill-tag">Socket.IO</span>
-        <span class="skill-tag">Microservices</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-label">Frontend</div>
-      <div class="skill-tags">
-        <span class="skill-tag">React</span>
-        <span class="skill-tag">Next.js</span>
-        <span class="skill-tag">Redux Toolkit</span>
-        <span class="skill-tag">Tailwind CSS</span>
-        <span class="skill-tag">Streamlit</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-label">Database & Cache</div>
-      <div class="skill-tags">
-        <span class="skill-tag">PostgreSQL</span>
-        <span class="skill-tag">Supabase</span>
-        <span class="skill-tag">TypeORM</span>
-        <span class="skill-tag">Redis</span>
-        <span class="skill-tag">MongoDB</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-label">Deep Learning</div>
-      <div class="skill-tags">
-        <span class="skill-tag">TensorFlow</span>
         <span class="skill-tag">PyTorch</span>
-        <span class="skill-tag">CUDA</span>
-        <span class="skill-tag">TensorRT</span>
-        <span class="skill-tag">vLLM</span>
-        <span class="skill-tag">DeepSpeed</span>
+        <span class="skill-tag">TensorFlow</span>
+        <span class="skill-tag">JAX</span>
+        <span class="skill-tag">NumPy</span>
+        <span class="skill-tag">Pandas</span>
+        <span class="skill-tag">scikit-learn</span>
+        <span class="skill-tag">Hugging Face</span>
+        <span class="skill-tag">ONNX Runtime</span>
+        <span class="skill-tag">W&amp;B</span>
+        <span class="skill-tag">RLHF / DPO</span>
+        <span class="skill-tag">Ablation Design</span>
       </div>
     </div>
+
+    <div class="skill-group">
+      <div class="skill-label">AI Agents</div>
+      <div class="skill-tags">
+        <span class="skill-tag">LangChain / LangGraph</span>
+        <span class="skill-tag">OpenAI Agents SDK</span>
+        <span class="skill-tag">Google ADK</span>
+        <span class="skill-tag">Anthropic Agent SDK</span>
+        <span class="skill-tag">Claude Code (skills + sub-agents)</span>
+        <span class="skill-tag">CrewAI</span>
+        <span class="skill-tag">AutoGen</span>
+        <span class="skill-tag">Pydantic AI</span>
+        <span class="skill-tag">Vercel AI SDK</span>
+        <span class="skill-tag">MCP</span>
+        <span class="skill-tag">browser-use</span>
+        <span class="skill-tag">Playwright (CUA)</span>
+        <span class="skill-tag">Vertex AI fine-tuning</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-label">Inference / Serving</div>
+      <div class="skill-tags">
+        <span class="skill-tag">vLLM (TP=1)</span>
+        <span class="skill-tag">SGLang</span>
+        <span class="skill-tag">Ollama</span>
+        <span class="skill-tag">TGI</span>
+        <span class="skill-tag">NVIDIA Triton</span>
+        <span class="skill-tag">H100 / RTX 4090 ops</span>
+        <span class="skill-tag">KV-cache &amp; prefix-cache tuning</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-label">Voice / Real-time</div>
+      <div class="skill-tags">
+        <span class="skill-tag">LiveKit</span>
+        <span class="skill-tag">FastRTC</span>
+        <span class="skill-tag">TEN Framework</span>
+        <span class="skill-tag">WebRTC</span>
+        <span class="skill-tag">WebSocket</span>
+        <span class="skill-tag">Deepgram</span>
+        <span class="skill-tag">ElevenLabs</span>
+        <span class="skill-tag">Gemini Live</span>
+        <span class="skill-tag cn">Agora 声网</span>
+        <span class="skill-tag">Alibaba TTS</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-label">Embodied AI</div>
+      <div class="skill-tags">
+        <span class="skill-tag">OmniGibson</span>
+        <span class="skill-tag">BEHAVIOR-1K</span>
+        <span class="skill-tag">GSAM (Grounded-SAM)</span>
+        <span class="skill-tag">CuRobo</span>
+        <span class="skill-tag">BDDL eval design</span>
+        <span class="skill-tag">IK branch analysis</span>
+        <span class="skill-tag cn">Lejun 乐聚 humanoid</span>
+      </div>
+    </div>
+
     <div class="skill-group">
       <div class="skill-label">Computer Vision</div>
       <div class="skill-tags">
+        <span class="skill-tag">OpenCV</span>
         <span class="skill-tag">DeepFace</span>
-        <span class="skill-tag">FasNet</span>
+        <span class="skill-tag">FasNet anti-spoofing</span>
         <span class="skill-tag">RetinaFace</span>
         <span class="skill-tag">MTCNN</span>
-        <span class="skill-tag">Emotion Recognition</span>
-        <span class="skill-tag">Liveness Detection</span>
+        <span class="skill-tag">Ensemble Detector Fusion</span>
+        <span class="skill-tag">EMA Temporal Smoothing</span>
+        <span class="skill-tag">CUDA 11.8 / cuDNN</span>
       </div>
     </div>
+
     <div class="skill-group">
-      <div class="skill-label">NLP & LLM</div>
+      <div class="skill-label">GPU Infra</div>
       <div class="skill-tags">
-        <span class="skill-tag">GPT-4</span>
-        <span class="skill-tag">Claude</span>
-        <span class="skill-tag">Gemini</span>
-        <span class="skill-tag">DeepSeek</span>
-        <span class="skill-tag">Deepgram STT/TTS</span>
-        <span class="skill-tag">RAG</span>
-        <span class="skill-tag">LoRA/QLoRA/PEFT</span>
+        <span class="skill-tag">Huawei Cloud</span>
+        <span class="skill-tag cn">Kuaishou 快手 infra</span>
+        <span class="skill-tag cn">DataCanvas 九章云极 (Alaya NeW)</span>
+        <span class="skill-tag">GPU container debug</span>
+        <span class="skill-tag">heterogeneous-compute scheduling</span>
       </div>
     </div>
+
     <div class="skill-group">
-      <div class="skill-label">AI Frameworks</div>
+      <div class="skill-label">Google Cloud</div>
       <div class="skill-tags">
-        <span class="skill-tag">LangChain</span>
-        <span class="skill-tag">LlamaIndex</span>
-        <span class="skill-tag">Ollama</span>
-        <span class="skill-tag">Function Calling</span>
-        <span class="skill-tag">Multi-Agent Systems</span>
+        <span class="skill-tag">Vertex AI</span>
+        <span class="skill-tag">Gemini 3.1 / Live</span>
+        <span class="skill-tag">Firebase (Firestore + Auth + Vector)</span>
+        <span class="skill-tag">Cloud Run</span>
+        <span class="skill-tag">Cloud Build</span>
+        <span class="skill-tag">Routes / Places / Maps</span>
+        <span class="skill-tag">Apigee</span>
       </div>
     </div>
+
     <div class="skill-group">
-      <div class="skill-label">Cloud & DevOps</div>
+      <div class="skill-label">Edge / Web</div>
       <div class="skill-tags">
-        <span class="skill-tag">GCP (Vertex AI)</span>
-        <span class="skill-tag">AWS</span>
+        <span class="skill-tag">Vercel (REST v13, ISR, edge)</span>
+        <span class="skill-tag">Cloudflare (DNS, CDN, Workers, Turnstile)</span>
+        <span class="skill-tag">Next.js 15/16</span>
+        <span class="skill-tag">React 19</span>
+        <span class="skill-tag">SwiftUI</span>
+        <span class="skill-tag">Three.js</span>
+        <span class="skill-tag">Tailwind CSS</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-label">Backend / Data</div>
+      <div class="skill-tags">
+        <span class="skill-tag">FastAPI</span>
+        <span class="skill-tag">Django Channels</span>
+        <span class="skill-tag">MariaDB (VECTOR/HNSW)</span>
+        <span class="skill-tag">pgvector</span>
+        <span class="skill-tag">Supabase + PowerSync</span>
+        <span class="skill-tag">Upstash</span>
+        <span class="skill-tag">Redis</span>
         <span class="skill-tag">Docker</span>
-        <span class="skill-tag">Kubernetes</span>
-        <span class="skill-tag">CI/CD</span>
-        <span class="skill-tag">Git</span>
+        <span class="skill-tag">n8n</span>
+        <span class="skill-tag">sqlglot</span>
       </div>
     </div>
+
+    <div class="skill-group">
+      <div class="skill-label">Observability / Eval</div>
+      <div class="skill-tags">
+        <span class="skill-tag">OpenTelemetry</span>
+        <span class="skill-tag">Langfuse</span>
+        <span class="skill-tag">Promptfoo</span>
+        <span class="skill-tag">Lighthouse CI</span>
+        <span class="skill-tag">Gemini-as-judge eval</span>
+        <span class="skill-tag">TOON v3 token benchmarking</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-label">SEO / GEO</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Schema.org JSON-LD</span>
+        <span class="skill-tag">multi-locale canonical</span>
+        <span class="skill-tag">sitemap + hreflang</span>
+        <span class="skill-tag">Lighthouse-gated a11y / perf</span>
+        <span class="skill-tag">GEO (AI Overviews / ChatGPT Search / Perplexity)</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- § 6 — CERTIFICATIONS -->
+<!-- § 7 — CERTIFICATIONS -->
 <section class="sect" id="certifications">
   <div class="sect-head">
-    <div class="sect-num">06</div>
-    <h2 class="sect-title">Certifications</h2>
+    <div class="sect-num">07</div>
+    <h2 class="sect-title">Continuous Learning</h2>
   </div>
-  <div class="cert-list">
-    <div class="cert-item">
-      <div class="cert-num">1</div>
-      <div><strong>Python for Everybody Specialization</strong> — University of Michigan</div>
-    </div>
-    <div class="cert-item">
-      <div class="cert-num">2</div>
-      <div><strong>C for Everyone: Programming Fundamentals</strong> — UC Santa Cruz</div>
-    </div>
-    <div class="cert-item">
-      <div class="cert-num">3</div>
-      <div><strong>Introduction to Networking</strong> — NVIDIA</div>
+  <div class="entry">
+    <div class="cert-list">
+      <div class="cert-item">
+        <div class="cert-num">1</div>
+        <div><strong>Python for Everybody Specialization</strong> (5 courses) &middot; <em>University of Michigan</em> — Coursera, May 2025. <span style="color:var(--ink-faint);font-family:var(--mono);font-size:0.78rem;">verify: coursera.org/verify/specialization/I2UVB701P0JF</span></div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-num">2</div>
+        <div><strong>C for Everyone: Programming Fundamentals</strong> &middot; <em>UC Santa Cruz</em> — Coursera, Jul 2025.</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-num">3</div>
+        <div><strong>Introduction to Networking</strong> &middot; <em>NVIDIA</em> — Coursera, Jan 2025.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -868,10 +1200,51 @@ body {
 <!-- WRITINGS -->
 <section class="writings-sect" id="writings">
   <div class="writings-head">
-    <h2>Writings & Thoughts</h2>
-    <p>Articles on engineering practice, AI tooling, and development philosophy.</p>
+    <h2>Writings &amp; Thoughts</h2>
+    <p>Source-level analyses of agent infrastructure and engineering practice notes — published on <a href="https://duocodetech.com/blog" target="_blank" style="color:var(--accent);text-decoration:none;">duocodetech.com/blog</a>.</p>
   </div>
   <div class="writings-grid">
+
+    <a class="writing-card" href="https://duocodetech.com/blog/agent-team-orchestration" target="_blank">
+      <div class="writing-meta">
+        <span class="writing-tag">Multi-Agent · OSS Comparative</span>
+        <span class="writing-date">2026 · 04 · 02</span>
+      </div>
+      <h3>The Agent Team Problem: Seven Open-Source Approaches to Orchestrating AI Coding Agents</h3>
+      <p>Comparative analysis of OrbitDock · codex-autorunner · Squad · Open-Inspect · Multica · Symphony · AionUi (20.7K ★) on four axes (identity / platform / infrastructure / state). Surfaces Symphony's Erlang-style zero-persistence as fault tolerance for agent coordination.</p>
+      <span class="writing-arrow">Read &rarr;</span>
+    </a>
+
+    <a class="writing-card" href="https://duocodetech.com/blog/claude-code-harness-engineering" target="_blank">
+      <div class="writing-meta">
+        <span class="writing-tag">Source-Level Study</span>
+        <span class="writing-date">2026 · 03 · 31</span>
+      </div>
+      <h3>The Harness That Makes the Model Useful: A Source-Level Study of Claude Code</h3>
+      <p>513,237 LOC TypeScript across 1,902 files; 40 tools / 9 categories; 101 commands; 20 service modules. Thesis: <strong>95% harness, 5% model interaction.</strong> Custom Ink renderer; 4-layer permissions; git-worktree multi-agent isolation.</p>
+      <span class="writing-arrow">Read &rarr;</span>
+    </a>
+
+    <a class="writing-card" href="https://duocodetech.com/blog/claude-code-anatomy" target="_blank">
+      <div class="writing-meta">
+        <span class="writing-tag">Architecture Anatomy</span>
+        <span class="writing-date">2026 · 03 · 31</span>
+      </div>
+      <h3>Inside Claude Code: How a 513K-Line Codebase Turns an LLM Into a Coding Agent</h3>
+      <p>Anatomy of a 1,902-file codebase: Yoga-WASM rendering pipeline (60 fps double-buffer, viewport culling), Mailbox-async multi-agent isolation, MCP defer-load (300+ integrations), 4-layer permission stack with audit trails.</p>
+      <span class="writing-arrow">Read &rarr;</span>
+    </a>
+
+    <a class="writing-card" href="https://duocodetech.com/blog/context-search-engine" target="_blank">
+      <div class="writing-meta">
+        <span class="writing-tag">Architecture Proposal</span>
+        <span class="writing-date">2026 · 03 · 30</span>
+      </div>
+      <h3>What Kind of Context Search Engine Do We Actually Need?</h3>
+      <p>Distinguishes <strong>search</strong> ("where is X?") from <strong>orientation</strong> ("what does this codebase look like?"). Proposes MCP-based, token-budget-constrained engine with 4 tools and ~1,500-LOC reference. Generic embeddings only score 0.42–0.49 on code retrieval.</p>
+      <span class="writing-arrow">Read &rarr;</span>
+    </a>
+
     <a class="writing-card" href="ai-coding-policy.html">
       <div class="writing-meta">
         <span class="writing-tag">Engineering Practice</span>
@@ -881,6 +1254,7 @@ body {
       <p>A personal framework for using AI coding tools responsibly — how I stay productive without losing engineering rigor, and the rules I hold myself to.</p>
       <span class="writing-arrow">Read &rarr;</span>
     </a>
+
   </div>
 </section>
 
@@ -888,7 +1262,7 @@ body {
 
 <!-- FOOTER -->
 <footer class="foot">
-  <div class="foot-brand">Liu Wei &mdash; 2025</div>
+  <div class="foot-brand">Liu Wei · 刘维 &mdash; 2026</div>
   <div class="foot-motto">Build with intention, ship with confidence.</div>
 </footer>
 
